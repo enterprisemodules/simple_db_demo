@@ -1,3 +1,4 @@
+[![Enterprise Modules](https://raw.githubusercontent.com/enterprisemodules/public_images/master/banner1.jpg)](https://www.enterprisemodules.com)
 # Demo Puppet implementation
 
 This repo contains a demonstration of a simple database installation. It uses the [`ora_profile`](https://forge.puppet.com/enterprisemodules/ora_profile) module to get a quick and easy start.
@@ -33,7 +34,7 @@ You must always use the specified order:
 The software must be placed in `modules/software/files`. It must contain the next files:
 
 ### Puppet Enterprise (Not needed when using masterless deployments)
-- [puppet-enterprise-2017.3.5-el-7-x86_64.tar.gz (Extracted tar)](https://puppet.com/download-puppet-enterprise)
+- [puppet-enterprise-2018.1.3-el-7-x86_64.tar.gz (Extracted tar)](https://puppet.com/download-puppet-enterprise)
 
 ### Oracle Database version 18.0.0.0
 - LINUX.X64_180000_db_home.zip
