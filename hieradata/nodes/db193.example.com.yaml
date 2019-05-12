@@ -1,0 +1,49 @@
+---
+deployment_zone: vagrant
+
+role: role::oradb::simple_db
+
+# ------------------------------------------------------------------------------
+#
+#  Class overrides and additions
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_patches:                                        skip
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::dbname:                                            DB193
+ora_profile::database::version:                                           19.3.0.0
+ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_software
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_software::database_type:                        EE
+ora_profile::database::db_software::file_name:                            LINUX.X64_193000_db_home
+ora_profile::database::db_software::dirs:
+- /u01/app/oracle/product
+- "/u01/app/oracle/product/%{lookup('ora_profile::database::version')}"
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_definition
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_definition::init_ora_template:                  "profile/init.ora.%{lookup('ora_profile::database::version')}.erb"
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_listener
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_listener::sqlnet_version:                       '19.3'
