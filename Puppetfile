@@ -10,7 +10,7 @@ mod 'ipcrm-echo'
 mod 'herculesteam-augeasproviders_core'
 mod 'herculesteam-augeasproviders_sysctl'
 mod 'puppetlabs-firewall'
-mod 'crayfishx-firewalld'
+mod 'puppet-firewalld'
 #
 # Needed for Windows support
 #
