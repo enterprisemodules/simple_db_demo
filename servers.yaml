@@ -37,7 +37,7 @@ pe-dbmaster:
   ram:              3072
   type:             pe-master
   virtualboxorafix: false
-  puppet_installer: puppet-enterprise-2019.3.0-el-7-x86_64/puppet-enterprise-installer
+  puppet_installer: puppet-enterprise-2019.5.0-el-8-x86_64/puppet-enterprise-installer
 
 #
 # All masterless nodes
