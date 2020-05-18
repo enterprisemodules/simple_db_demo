@@ -5,7 +5,6 @@ class profile::base::vagrant()
     if $::kernel == 'Linux' {
 
       $required_packages = [
-        'bc',
         'mlocate',
         'unzip',
       ]
