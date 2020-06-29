@@ -35,4 +35,4 @@ ora_profile::database::db_software::file_name:                            linuxa
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_definition::init_ora_template:                  profile/init.ora.12.1.0.2.erb
+#ora_profile::database::db_definition::init_ora_template:                  profile/init.ora.12.1.0.2.erb
