@@ -38,7 +38,7 @@ ora_profile::database::db_software::dirs:
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_definition::init_ora_template:                  "profile/init.ora.%{lookup('ora_profile::database::version')}.erb"
+#ora_profile::database::db_definition::init_ora_template:                  "profile/init.ora.%{lookup('ora_profile::database::version')}.erb"
 
 
 # ------------------------------------------------------------------------------
