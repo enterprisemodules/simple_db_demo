@@ -12,12 +12,12 @@ hierarchy:
       
   - name: "Version data for all version 12.1 versions."
     data_hash: 'easy_type::versioned_data'
-    path: versions/version_12.1.yaml
+    path: versions/121.yaml
     options:
         variable: ora_profile::database::version
         specification:
           - '>= 12.1'
-          - '< 12.2'         # Mainly for the windows nodes
+          - '< 12.2'
 
   - name: "Deployment Zone" # Uses custom facts.
     path: "deployment_zones/%{::deployment_zone}.yaml"
