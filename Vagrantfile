@@ -137,9 +137,9 @@ def masterless_setup(config, server, srv, hostname)
     @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_puppet.sh' } }
     @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/setup_puppet.sh' } }
 
-    if hostname == 'db121'
-      @provisioners << { shell: { inline: 'yum -y install gcc' } }
-    end
+   # if hostname == 'db121'
+   #   @provisioners << { shell: { inline: 'yum -y install gcc' } }
+   # end
 
     @provisioners << { puppet: { manifests_path: ["vm", "/vagrant/manifests"],
                                  manifest_file: "site.pp",

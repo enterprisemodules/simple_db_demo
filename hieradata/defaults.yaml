@@ -10,12 +10,11 @@ lookup_options:
       strategy: deep
       merge_hash_arrays: true
 
-
 # ------------------------------------------------------------------------------
 #
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::source:                                            puppet:///modules/software
+ora_profile::database::source: puppet:///modules/software
 
-easy_type::generate_password_mode:  development
+easy_type::generate_password_mode: development

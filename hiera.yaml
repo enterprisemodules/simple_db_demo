@@ -8,7 +8,16 @@ hierarchy:
   - name: "Per-node data"                   # Human-readable name.
     paths: 
       - "nodes/%{trusted.certname}.yaml"  # File path, relative to datadir.
-      - "nodes/%{hostname}.yaml"          # Mainly for the windows nodes
+      - "nodes/%{hostname}.yaml" 
+      
+  - name: "Version data for all version 12.1 versions."
+    data_hash: 'easy_type::versioned_data'
+    path: versions/121.yaml
+    options:
+        variable: ora_profile::database::version
+        specification:
+          - '>= 12.1'
+          - '< 12.2'
 
   - name: "Deployment Zone" # Uses custom facts.
     path: "deployment_zones/%{::deployment_zone}.yaml"
