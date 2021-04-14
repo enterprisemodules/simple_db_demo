@@ -9,6 +9,7 @@ role: role::oradb::simple_db
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches:                                        skip
+ora_profile::database::cis_controls::db_version:                          db12c  # This works on all versions
 
 
 # ------------------------------------------------------------------------------
