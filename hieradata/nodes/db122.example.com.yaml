@@ -19,6 +19,7 @@ ora_profile::database::db_patches:                                        skip
 ora_profile::database::dbname:                                            DB122
 ora_profile::database::version:                                           12.2.0.1
 ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
+ora_profile::database::cis_controls::db_version:                          db12c  # This works on all versions
 
 
 # ------------------------------------------------------------------------------
