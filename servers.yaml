@@ -44,6 +44,7 @@ pe-dbmaster:
 #
 ml-db112:
   public_ip:        '192.168.253.112'
+  box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
   software_files:
     - p13390677_112040_Linux-x86-64_1of7.zip
     - p13390677_112040_Linux-x86-64_2of7.zip
@@ -71,6 +72,21 @@ ml-db190:
   software_files:
     - LINUX.X64_193000_db_home.zip
 
+ml-dbxxx:
+  public_ip:        '192.168.253.200'
+  ram:              5120
+  software_files:
+    - LINUX.X64_193000_db_home.zip        # 19c oracle home
+    - LINUX.X64_180000_db_home.zip        # 18c oracle home
+    - linuxx64_12201_database.zip         # 12cR2 oracle home
+    - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.25
+    - p32545008_190000_Linux-x86-64.zip   # GIRU-19.11.0.0.210420
+    - p32399816_190000_Linux-x86-64.zip   # OJVM-19.11.0.0.210420
+    - p32524152_180000_Linux-x86-64.zip   # GIRU-18.14.0.0.210420
+    - p32552752_180000_Linux-x86-64.zip   # OJVM-18.14.0.0.210420
+    - p32540149_122010_Linux-x86-64.zip   # GIRU-12.2.0.1.210420
+    - p32473172_122010_Linux-x86-64.zip   # OJVM-12.2.0.1.210420
+
 ml-windb180:
   public_ip:        '192.168.253.181'
   protocol:         winrm
@@ -85,6 +101,7 @@ ml-windb180:
 #
 pe-db112:
   public_ip:        '192.168.253.112'
+  box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
   software_files:
     - p13390677_112040_Linux-x86-64_1of7.zip
     - p13390677_112040_Linux-x86-64_2of7.zip
@@ -111,3 +128,18 @@ pe-db190:
   public_ip:        '192.168.253.190'
   software_files:
     - LINUX.X64_193000_db_home.zip
+
+pe-dbxxx:
+  public_ip:        '192.168.253.200'
+  ram:              5120
+  software_files:
+    - LINUX.X64_193000_db_home.zip        # 19c oracle home
+    - LINUX.X64_180000_db_home.zip        # 18c oracle home
+    - linuxx64_12201_database.zip         # 12cR2 oracle home
+    - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.25
+    - p32545008_190000_Linux-x86-64.zip   # GIRU-19.11.0.0.210420
+    - p32399816_190000_Linux-x86-64.zip   # OJVM-19.11.0.0.210420
+    - p32524152_180000_Linux-x86-64.zip   # GIRU-18.14.0.0.210420
+    - p32552752_180000_Linux-x86-64.zip   # OJVM-18.14.0.0.210420
+    - p32540149_122010_Linux-x86-64.zip   # GIRU-12.2.0.1.210420
+    - p32473172_122010_Linux-x86-64.zip   # OJVM-12.2.0.1.210420
