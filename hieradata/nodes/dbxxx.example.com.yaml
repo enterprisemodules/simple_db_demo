@@ -1,0 +1,230 @@
+---
+deployment_zone: vagrant
+
+role: role::oradb::simple_db
+# role: role::oradb::secure_db
+
+# ------------------------------------------------------------------------------
+#
+#  Class overrides and additions
+#
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::dbname:                                            DB190
+ora_profile::database::version:                                           19.0.0.0
+ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
+ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_software
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_software::database_type:                        EE
+ora_profile::database::db_software::file_name:                            LINUX.X64_193000_db_home
+ora_profile::database::db_software::dirs:
+  - /u01/app/oracle/product/18.0.0.0
+  - /u01/app/oracle/product/12.2.0.1
+ora_profile::database::db_software::oracle_home:
+  19cDEFAULT_HOME:
+    version:     19.0.0.0
+    file:        LINUX.X64_193000_db_home
+    oracle_home: /u01/app/oracle/product/19.0.0.0/db_home1
+  18cADDITIONAL_HOME:
+    version:     18.0.0.0
+    file:        LINUX.X64_180000_db_home
+    oracle_home: /u01/app/oracle/product/18.0.0.0/db_home1
+  12cR2ADDITIONAL_HOME:
+    version:     12.2.0.1
+    file:        linuxx64_12201_database
+    oracle_home: /u01/app/oracle/product/12.2.0.1/db_home1
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_patches
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_patches::include_ojvm:                          true
+ora_profile::database::db_patches::level:                                 APR2021RU
+ora_profile::database::db_patches::opversion:                             12.2.0.1.25
+ora_profile::database::db_patches::patch_list:
+  "/u01/app/oracle/product/18.0.0.0/db_home1:32524152":                                             # GI Release Update 18.14.0.0.210420
+    source:                "%{::ora_profile::database::source}/p32524152_180000_Linux-x86-64.zip"
+    sub_patches:
+    - '32524155'
+    - '32536939'
+  "/u01/app/oracle/product/18.0.0.0/db_home1:32552752-OJVM-18.14.0.0.210420":
+    source:                "%{lookup('ora_profile::database::source')}/p32552752_180000_Linux-x86-64.zip"
+    sub_patches:
+    - '32552752'
+  "/u01/app/oracle/product/12.2.0.1/db_home1:32540149":                                             # GI Release Update 18.14.0.0.210420
+    source:                "%{::ora_profile::database::source}/p32540149_122010_Linux-x86-64.zip"
+    sub_patches:
+    - '32507738'
+    - '31802727'
+  "/u01/app/oracle/product/12.2.0.1/db_home1:32473172-OJVM-12.2.0.1.210420":
+    source:                "%{lookup('ora_profile::database::source')}/p32473172_122010_Linux-x86-64.zip"
+    sub_patches:
+    - '32473172'
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_definition
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_definition::dbname:
+  DB190:
+    oracle_home:      /u01/app/oracle/product/19.0.0.0/db_home1
+    init_ora_params:
+      dbname: DB190
+      compatible: '19.0.0.0'
+    spfile_location:  /u01/app/oracle/product/19.0.0.0/db_home1/dbs
+  DB180:
+    oracle_home:      /u01/app/oracle/product/18.0.0.0/db_home1
+    init_ora_params:
+      dbname: DB180
+      compatible: '18.0.0.0'
+    spfile_location:  /u01/app/oracle/product/18.0.0.0/db_home1/dbs
+  DB122:
+    oracle_home:      /u01/app/oracle/product/12.2.0.1/db_home1
+    init_ora_params:
+      dbname: DB122
+      compatible: '12.2.0.1'
+    spfile_location:  /u01/app/oracle/product/12.2.0.1/db_home1/dbs
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_listener
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_listener::sqlnet_version:                       '19.0'
+
+#
+# CIS parameters
+#
+ora_cis::controls::failed_login_attempts_is_less_than_or_equal_to_5::test_1::preferred_value: 3
+#
+# This is the full skip list. So 
+#
+ora_profile::database::cis_controls::skip_list: []
+  # - admin_restrictions_is_set_to_on
+  # - all_audit_option_on_sys_aud_is_enabled
+  # - all_default_passwords_are_changed
+  # - all_is_revoked_from_unauthorized_grantee_on_aud
+  # - all_is_revoked_from_unauthorized_grantee_on_dba
+  # - all_is_revoked_on_sensitive_tables
+  # - all_sample_data_and_users_have_been_removed
+  # - alter_database_link_action_audit_is_enabled
+  # - alter_procedure_function_package_package_body_action_audit_is_enabled
+  # - alter_profile_action_audit_is_enabled
+  # - alter_role_action_audit_is_enabled
+  # - alter_synonym_action_audit_is_enabled
+  # - alter_system_audit_option_is_enabled
+  # - alter_system_is_revoked_from_unauthorized_grantee
+  # - alter_system_privilege_audit_is_enabled
+  # - alter_trigger_action_audit_is_enabled
+  # - alter_user_action_audit_is_enabled
+  # - any_is_revoked_from_unauthorized_grantee
+  # - audit_sys_operations_is_set_to_true
+  # - audit_system_is_revoked_from_unauthorized_grantee
+  # - audit_trail_is_set_to_db_xml_os_dbextended_or_xmlextended
+  # - audsys_aud_unified_access_audit_is_enabled
+  # - become_user_is_revoked_from_unauthorized_grantee
+  # - create_any_library_is_revoked_from_unauthorized_grantee
+  # - create_database_link_action_audit_is_enabled
+  # - create_library_is_revoked_from_unauthorized_grantee
+  # - create_procedure_function_package_package_body_action_audit_is_enabled
+  # - create_procedure_is_revoked_from_unauthorized_grantee
+  # - create_profile_action_audit_is_enabled
+  # - create_role_action_audit_is_enabled
+  # - create_session_audit_option_is_enabled
+  # - create_synonym_action_audit_is_enabled
+  # - create_trigger_action_audit_is_enabled
+  # - create_user_action_audit_is_enabled
+  # - database_link_audit_option_is_enabled
+  # - dba_is_revoked_from_unauthorized_grantee
+  # - dba_sys_privs_is_revoked_from_unauthorized_grantee_with_admin_option_set_to_yes
+  # - dba_users_authentication_type_is_not_set_to_external_for_any_user
+  # - delete_catalog_role_is_revoked_from_unauthorized_grantee
+  # - directory_audit_option_is_enabled
+  # - drop_any_procedure_audit_option_is_enabled
+  # - drop_database_link_action_audit_is_enabled
+  # - drop_procedure_function_package_package_body_action_audit_is_enabled
+  # - drop_profile_action_audit_is_enabled
+  # - drop_role_action_audit_is_enabled
+  # - drop_synonym_action_audit_is_enabled
+  # - drop_trigger_action_audit_is_enabled
+  # - drop_user_audit_option_is_enabled
+  # - execute_any_procedure_is_revoked_from_dbsnmp
+  # - execute_any_procedure_is_revoked_from_outln
+  # - execute_catalog_role_is_revoked_from_unauthorized_grantee
+  # - execute_is_not_granted_to_public_on_non_default_packages
+  # - execute_is_revoked_from_public_on_encryption_packages
+  # - execute_is_revoked_from_public_on_file_system_packages
+  # - execute_is_revoked_from_public_on_java_packages
+  # - execute_is_revoked_from_public_on_job_scheduler_packages
+  # - execute_is_revoked_from_public_on_network_packages
+  # - execute_is_revoked_from_public_on_sql_injection_helper_packages
+  # - exempt_access_policy_is_revoked_from_unauthorized_grantee
+  # - extproc_is_not_present_in_listener_ora
+  # - failed_login_attempts_is_less_than_or_equal_to_5
+  # - global_names_is_set_to_true
+  # - grant_action_audit_is_enabled
+  # - grant_any_object_privilege_audit_option_is_enabled
+  # - grant_any_object_privilege_is_revoked_from_unauthorized_grantee
+  # - grant_any_privilege_audit_option_is_enabled
+  # - grant_any_privilege_is_revoked_from_unauthorized_grantee
+  # - grant_any_role_is_revoked_from_unauthorized_grantee
+  # - inactive_account_time_is_less_than_or_equal_to_120
+  # - logon_and_logoff_actions_audit_is_enabled
+  # - no_public_database_links_exist
+  # - no_users_are_assigned_the_default_profile
+  # - o7_dictionary_accessibility_is_set_to_false
+  # - os_roles_is_set_to_false
+  # - password_grace_time_is_less_than_or_equal_to_5
+  # - password_life_time_is_less_than_or_equal_to_90
+  # - password_lock_time_is_greater_than_or_equal_to_1
+  # - password_reuse_max_is_greater_than_or_equal_to_20
+  # - password_reuse_time_is_greater_than_or_equal_to_365
+  # - password_verify_function_is_set_for_all_profiles
+  # - procedure_audit_option_is_enabled
+  # - profile_audit_option_is_enabled
+  # - public_database_link_audit_option_is_enabled
+  # - public_synonym_audit_option_is_enabled
+  # - remote_listener_is_empty
+  # - remote_login_passwordfile_is_set_to_none
+  # - remote_os_authent_is_set_to_false
+  # - remote_os_roles_is_set_to_false
+  # - resource_limit_is_set_to_true
+  # - revoke_action_audit_is_enabled
+  # - role_audit_option_is_enabled
+  # - sec_case_sensitive_logon_is_set_to_true
+  # - sec_max_failed_login_attempts_is_3_or_less
+  # - sec_protocol_error_further_action_is_set_to_drop3
+  # - sec_protocol_error_trace_action_is_set_to_log
+  # - sec_return_server_release_banner_is_set_to_false
+  # - secure_control_is_set_in_listener_ora
+  # - secure_register_is_set_to_tcps_or_ipc
+  # - select_any_dictionary_audit_option_is_enabled
+  # - select_any_dictionary_is_revoked_from_unauthorized_grantee
+  # - select_any_dictionary_privilege_audit_is_enabled
+  # - select_any_table_is_revoked_from_unauthorized_grantee
+  # - select_catalog_role_is_revoked_from_unauthorized_grantee
+  # - sessions_per_user_is_less_than_or_equal_to_10
+  # - sql92_security_is_set_to_true
+  # - synonym_audit_option_is_enabled
+  # - sys_user_mig_has_been_dropped
+  # - system_grant_audit_option_is_enabled
+  # - trace_files_public_is_set_to_false
+  # - trigger_audit_option_is_enabled
+  # - user_audit_option_is_enabled
+  # - utl_file_dir_is_empty
