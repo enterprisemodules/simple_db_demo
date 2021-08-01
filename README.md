@@ -3,13 +3,27 @@
 
 This repo contains a demonstration of a simple database installation. It uses the [`ora_profile`](https://forge.puppet.com/enterprisemodules/ora_profile) module to get a quick and easy start.
 
-The name of the node indicates which version of Oracle will be installed in it i.e. db112 has version 11.2. This demo is ready for Puppet 4,5 and 6.
+The name of the node indicates which version of Oracle will be installed in it i.e. db112 has version 11.2. This demo is ready for Puppet 4,5,6 and 7.
+
+This demo also contains a multi-home multi-database example. This is node is named `dbxxx`. It contains three homes:
+
+- Oracle 12.2
+- Oracle 18
+- Oracle 19
+
+And a database for every home:
+
+- DB190:
+- DB180:
+- DB122:
+
+This is a perfect setup for when you need multiple versions of an Oracle database running during a transition periode.
 ## Starting the nodes masterless
 
 All nodes are available to test with Puppet masterless. To do so, add `ml-` for the name when using vagrant:
 
 ```
-$ vagrant up <ml-db112|ml-db121|ml-db122|ml-db180|ml-db190>
+$ vagrant up <ml-db112|ml-db121|ml-db122|ml-db180|ml-db190|ml-dbxxx>
 ```
 
 ## Starting the nodes with PE
@@ -18,7 +32,7 @@ You can also test with a Puppet Enterprise server. To do so, add `pe-` for the n
 
 ```
 $ vagrant up pe-dbmaster
-$ vagrant up <pe-db112|pe-db121|pe-db122|pe-db180|pe-db190>
+$ vagrant up <pe-db112|pe-db121|pe-db122|pe-db180|pe-db190|pe-dbxxx>
 ```
 
 ## ordering
@@ -26,7 +40,7 @@ $ vagrant up <pe-db112|pe-db121|pe-db122|pe-db180|pe-db190>
 You must always use the specified order:
 
 1. master
-2. <db112|db121|db122|db180|db190>
+2. <db112|db121|db122|db180|db190|dbxxx>
 
 ## Required software
 

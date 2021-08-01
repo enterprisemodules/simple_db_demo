@@ -6,6 +6,26 @@ include:
   - project: 'enterprisemodules/gitlab_ci'
     file: 'gitlab-ci.yml'
 
+multi_home_and_db_demo_check:
+  extends: .demo_check
+  variables:
+    server: ml-dbxxx
+  before_script:
+    - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
+    - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
+    - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - mkdir -p modules/software/files
+    - cp ~/software/LINUX.X64_193000_db_home.zip      ./modules/software/files/  # 19c oracle home
+    - cp ~/software/LINUX.X64_180000_db_home.zip      ./modules/software/files/  # 18c oracle home
+    - cp ~/software/linuxx64_12201_database.zip       ./modules/software/files/  # 12cR2 oracle home
+    - cp ~/software/p6880880_122010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.25
+    - cp ~/software/p32545008_190000_Linux-x86-64.zip ./modules/software/files/  # GIRU-19.11.0.0.210420
+    - cp ~/software/p32399816_190000_Linux-x86-64.zip ./modules/software/files/  # OJVM-19.11.0.0.210420
+    - cp ~/software/p32524152_180000_Linux-x86-64.zip ./modules/software/files/  # GIRU-18.14.0.0.210420
+    - cp ~/software/p32552752_180000_Linux-x86-64.zip ./modules/software/files/  # OJVM-18.14.0.0.210420
+    - cp ~/software/p32540149_122010_Linux-x86-64.zip ./modules/software/files/  # GIRU-12.2.0.1.210420
+    - cp ~/software/p32473172_122010_Linux-x86-64.zip ./modules/software/files/  # OJVM-12.2.0.1.210420
+
 db190_demo_check:
   extends: .demo_check
   variables:
