@@ -9,6 +9,7 @@ role: role::oradb::simple_db
 #  Class overrides and additions
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::db_patches:                                        skip
 
 
 # ------------------------------------------------------------------------------
@@ -16,8 +17,8 @@ role: role::oradb::simple_db
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::dbname:                                            DB190
-ora_profile::database::version:                                           19.0.0.0
+ora_profile::database::dbname:                                            DB210
+ora_profile::database::version:                                           21.0.0.0
 ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
 ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
 
@@ -28,89 +29,17 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_software::database_type:                        EE
-ora_profile::database::db_software::file_name:                            LINUX.X64_193000_db_home
+ora_profile::database::db_software::file_name:                            LINUX.X64_213000_db_home
 ora_profile::database::db_software::dirs:
-  - /u01/app/oracle/product/21.0.0.0
-  - /u01/app/oracle/product/18.0.0.0
-  - /u01/app/oracle/product/12.2.0.1
-ora_profile::database::db_software::oracle_home:
-  21cDEFAULT_HOME:
-    version:     21.0.0.0
-    file:        LINUX.X64_213000_db_home
-    oracle_home: /u01/app/oracle/product/21.0.0.0/db_home1
-  19cDEFAULT_HOME:
-    version:     19.0.0.0
-    file:        LINUX.X64_193000_db_home
-    oracle_home: /u01/app/oracle/product/19.0.0.0/db_home1
-  18cADDITIONAL_HOME:
-    version:     18.0.0.0
-    file:        LINUX.X64_180000_db_home
-    oracle_home: /u01/app/oracle/product/18.0.0.0/db_home1
-  12cR2ADDITIONAL_HOME:
-    version:     12.2.0.1
-    file:        linuxx64_12201_database
-    oracle_home: /u01/app/oracle/product/12.2.0.1/db_home1
-
-
-# ------------------------------------------------------------------------------
-#
-#  Settings for database::db_patches
-#
-# ------------------------------------------------------------------------------
-ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::level:                                 APR2021RU
-ora_profile::database::db_patches::opversion:                             12.2.0.1.25
-ora_profile::database::db_patches::patch_list:
-  "/u01/app/oracle/product/18.0.0.0/db_home1:32524152":                                             # GI Release Update 18.14.0.0.210420
-    source:                "%{::ora_profile::database::source}/p32524152_180000_Linux-x86-64.zip"
-    sub_patches:
-    - '32524155'
-    - '32536939'
-  "/u01/app/oracle/product/18.0.0.0/db_home1:32552752-OJVM-18.14.0.0.210420":
-    source:                "%{lookup('ora_profile::database::source')}/p32552752_180000_Linux-x86-64.zip"
-    sub_patches:
-    - '32552752'
-  "/u01/app/oracle/product/12.2.0.1/db_home1:32540149":                                             # GI Release Update 18.14.0.0.210420
-    source:                "%{::ora_profile::database::source}/p32540149_122010_Linux-x86-64.zip"
-    sub_patches:
-    - '32507738'
-    - '31802727'
-  "/u01/app/oracle/product/12.2.0.1/db_home1:32473172-OJVM-12.2.0.1.210420":
-    source:                "%{lookup('ora_profile::database::source')}/p32473172_122010_Linux-x86-64.zip"
-    sub_patches:
-    - '32473172'
+- /u01/app/oracle/product
+- "/u01/app/oracle/product/%{lookup('ora_profile::database::version')}"
 
 # ------------------------------------------------------------------------------
 #
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_definition::dbname:
-  DB210:
-    oracle_home:      /u01/app/oracle/product/21.0.0.0/db_home1
-    container_database: enabled
-    init_ora_params:
-      dbname: DB210
-      compatible: '21.0.0.0'
-    spfile_location:  /u01/app/oracle/product/21.0.0.0/db_home1/dbs
-  DB190:
-    oracle_home:      /u01/app/oracle/product/19.0.0.0/db_home1
-    init_ora_params:
-      dbname: DB190
-      compatible: '19.0.0.0'
-    spfile_location:  /u01/app/oracle/product/19.0.0.0/db_home1/dbs
-  DB180:
-    oracle_home:      /u01/app/oracle/product/18.0.0.0/db_home1
-    init_ora_params:
-      dbname: DB180
-      compatible: '18.0.0.0'
-    spfile_location:  /u01/app/oracle/product/18.0.0.0/db_home1/dbs
-  DB122:
-    oracle_home:      /u01/app/oracle/product/12.2.0.1/db_home1
-    init_ora_params:
-      dbname: DB122
-      compatible: '12.2.0.1'
-    spfile_location:  /u01/app/oracle/product/12.2.0.1/db_home1/dbs
+ora_profile::database::db_definition::container_database:                  enabled
 
 
 # ------------------------------------------------------------------------------
@@ -118,7 +47,7 @@ ora_profile::database::db_definition::dbname:
 #  Settings for database::db_listener
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_listener::sqlnet_version:                       '19.0'
+ora_profile::database::db_listener::sqlnet_version:                       '21.0'
 
 
 # ------------------------------------------------------------------------------

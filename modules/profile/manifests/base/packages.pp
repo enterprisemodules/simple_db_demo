@@ -3,11 +3,7 @@
 #
 class profile::base::packages()
 {
-  $required_package = [
-  ]
+  $required_package = {}
 
-  package{ $required_package:
-    ensure => 'installed',
-  }
-
+  ensure_resources('package', $required_package)
 }
