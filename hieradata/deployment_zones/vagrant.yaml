@@ -24,6 +24,10 @@ profile::base::hosts::list:
     ip: 192.168.253.190
     host_aliases:
       - db190
+  db210.example.com:
+    ip: 192.168.253.210
+    host_aliases:
+      - db210
   dbxxx.example.com:
     ip: 192.168.253.200
     host_aliases:

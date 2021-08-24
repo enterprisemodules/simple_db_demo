@@ -72,10 +72,16 @@ ml-db190:
   software_files:
     - LINUX.X64_193000_db_home.zip
 
+ml-db210:
+  public_ip:        '192.168.253.210'
+  software_files:
+    - LINUX.X64_213000_db_home.zip
+
 ml-dbxxx:
   public_ip:        '192.168.253.200'
   ram:              5120
   software_files:
+    - LINUX.X64_213000_db_home.zip        # 21c oracle home
     - LINUX.X64_193000_db_home.zip        # 19c oracle home
     - LINUX.X64_180000_db_home.zip        # 18c oracle home
     - linuxx64_12201_database.zip         # 12cR2 oracle home
@@ -129,10 +135,16 @@ pe-db190:
   software_files:
     - LINUX.X64_193000_db_home.zip
 
+pe-db210:
+  public_ip:        '192.168.253.210'
+  software_files:
+    - LINUX.X64_213000_db_home.zip
+
 pe-dbxxx:
   public_ip:        '192.168.253.200'
   ram:              5120
   software_files:
+    - LINUX.X64_213000_db_home.zip        # 21c oracle home
     - LINUX.X64_193000_db_home.zip        # 19c oracle home
     - LINUX.X64_180000_db_home.zip        # 18c oracle home
     - linuxx64_12201_database.zip         # 12cR2 oracle home

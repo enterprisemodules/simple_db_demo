@@ -13,9 +13,9 @@ This demo also contains a multi-home multi-database example. This is node is nam
 
 And a database for every home:
 
-- DB190:
-- DB180:
-- DB122:
+- DB190
+- DB180
+- DB122
 
 This is a perfect setup for when you need multiple versions of an Oracle database running during a transition periode.
 ## Starting the nodes masterless

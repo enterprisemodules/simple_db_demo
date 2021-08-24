@@ -55,7 +55,7 @@ ora_profile::database::db_listener::sqlnet_version:                       '19.0'
 #
 ora_cis::controls::failed_login_attempts_is_less_than_or_equal_to_5::test_1::preferred_value: 3
 #
-# This is the full skip list. So 
+# This is the full skip list for database::cis_controls
 #
 ora_profile::database::cis_controls::skip_list: []
   # - admin_restrictions_is_set_to_on
