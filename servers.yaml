@@ -9,7 +9,7 @@ defaults:
   additional_hosts:
     dbmaster:
       ip: 192.168.253.10
-  box:              enterprisemodules/ol-7.7-x86_64-nocm
+  box:              enterprisemodules/ol-8.1-x86_64-nocm
   dhcp_fix:         false
   virtualboxorafix: true
   custom_facts:
@@ -37,7 +37,7 @@ pe-dbmaster:
   ram:              3072
   type:             pe-master
   virtualboxorafix: false
-  puppet_installer: puppet-enterprise-2019.5.0-el-8-x86_64/puppet-enterprise-installer
+  puppet_installer: puppet-enterprise-2021.3.0-el-8-x86_64/puppet-enterprise-installer
 
 #
 # All masterless nodes
@@ -51,6 +51,7 @@ ml-db112:
 
 ml-db121:
   public_ip:        '192.168.253.121'
+  box:              enterprisemodules/ol-7.7-x86_64-nocm
   software_files:
     - linuxamd64_12102_database_1of2.zip
     - linuxamd64_12102_database_2of2.zip
