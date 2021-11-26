@@ -8,7 +8,7 @@ defaults:
   needs_storage:    false
   additional_hosts:
     dbmaster:
-      ip: 192.168.253.10
+      ip: 192.168.56.10
   box:              enterprisemodules/ol-8.1-x86_64-nocm
   dhcp_fix:         false
   virtualboxorafix: true
@@ -32,7 +32,7 @@ pe-defaults:
 # The settings for the Puppet Enterprise Server
 #
 pe-dbmaster:
-  public_ip:        192.168.253.10
+  public_ip:        192.168.56.10
   cpucount:         2
   ram:              3072
   type:             pe-master
@@ -43,43 +43,43 @@ pe-dbmaster:
 # All masterless nodes
 #
 ml-db112:
-  public_ip:        '192.168.253.112'
+  public_ip:        '192.168.56.112'
   box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
   software_files:
     - p13390677_112040_Linux-x86-64_1of7.zip
     - p13390677_112040_Linux-x86-64_2of7.zip
 
 ml-db121:
-  public_ip:        '192.168.253.121'
+  public_ip:        '192.168.56.121'
   box:              enterprisemodules/ol-7.7-x86_64-nocm
   software_files:
     - linuxamd64_12102_database_1of2.zip
     - linuxamd64_12102_database_2of2.zip
 
 ml-db122:
-  public_ip:        '192.168.253.122'
+  public_ip:        '192.168.56.122'
   software_files:
     - linuxx64_12201_database.zip
     - p6880880_121010_Linux-x86-64.zip
     - p27468969_122010_Linux-x86-64.zip
 
 ml-db180:
-  public_ip:        '192.168.253.180'
+  public_ip:        '192.168.56.180'
   software_files:
     - LINUX.X64_180000_db_home.zip
 
 ml-db190:
-  public_ip:        '192.168.253.190'
+  public_ip:        '192.168.56.190'
   software_files:
     - LINUX.X64_193000_db_home.zip
 
 ml-db210:
-  public_ip:        '192.168.253.210'
+  public_ip:        '192.168.56.210'
   software_files:
     - LINUX.X64_213000_db_home.zip
 
 ml-dbxxx:
-  public_ip:        '192.168.253.200'
+  public_ip:        '192.168.56.200'
   ram:              5120
   software_files:
     - LINUX.X64_213000_db_home.zip        # 21c oracle home
@@ -95,7 +95,7 @@ ml-dbxxx:
     - p32473172_122010_Linux-x86-64.zip   # OJVM-12.2.0.1.210420
 
 ml-windb180:
-  public_ip:        '192.168.253.181'
+  public_ip:        '192.168.56.181'
   protocol:         winrm
   box:              mrlesmithjr/windows2019
   cpucount:         4
@@ -107,42 +107,42 @@ ml-windb180:
 # All Puppet Agent nodes
 #
 pe-db112:
-  public_ip:        '192.168.253.112'
+  public_ip:        '192.168.56.112'
   box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
   software_files:
     - p13390677_112040_Linux-x86-64_1of7.zip
     - p13390677_112040_Linux-x86-64_2of7.zip
 
 pe-db121:
-  public_ip:        '192.168.253.121'
+  public_ip:        '192.168.56.121'
   software_files:
     - linuxamd64_12102_database_1of2.zip
     - linuxamd64_12102_database_2of2.zip
 
 pe-db122:
-  public_ip:        '192.168.253.122'
+  public_ip:        '192.168.56.122'
   software_files:
     - linuxx64_12201_database.zip
     - p6880880_121010_Linux-x86-64.zip
     - p27468969_122010_Linux-x86-64.zip
 
 pe-db180:
-  public_ip:        '192.168.253.180'
+  public_ip:        '192.168.56.180'
   software_files:
     - LINUX.X64_180000_db_home.zip
 
 pe-db190:
-  public_ip:        '192.168.253.190'
+  public_ip:        '192.168.56.190'
   software_files:
     - LINUX.X64_193000_db_home.zip
 
 pe-db210:
-  public_ip:        '192.168.253.210'
+  public_ip:        '192.168.56.210'
   software_files:
     - LINUX.X64_213000_db_home.zip
 
 pe-dbxxx:
-  public_ip:        '192.168.253.200'
+  public_ip:        '192.168.56.200'
   ram:              5120
   software_files:
     - LINUX.X64_213000_db_home.zip        # 21c oracle home
