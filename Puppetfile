@@ -25,7 +25,7 @@ mod 'enterprisemodules-ora_config'
 mod 'enterprisemodules-easy_type'
 mod 'enterprisemodules-ora_install'
 mod 'enterprisemodules-ora_profile'
-mod 'enterprisemodules-ora_cis'
+mod 'enterprisemodules-ora_secured'
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #
