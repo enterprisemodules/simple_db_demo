@@ -80,7 +80,7 @@ ml-db210:
 
 ml-dbxxx:
   public_ip:        '192.168.56.200'
-  ram:              5120
+  ram:              7168
   software_files:
     - LINUX.X64_213000_db_home.zip        # 21c oracle home
     - LINUX.X64_193000_db_home.zip        # 19c oracle home
@@ -143,7 +143,7 @@ pe-db210:
 
 pe-dbxxx:
   public_ip:        '192.168.56.200'
-  ram:              5120
+  ram:              7168
   software_files:
     - LINUX.X64_213000_db_home.zip        # 21c oracle home
     - LINUX.X64_193000_db_home.zip        # 19c oracle home
