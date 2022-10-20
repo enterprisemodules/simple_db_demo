@@ -3,5 +3,5 @@
 # Settings for database::packages specific for this version
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::packages::list:
+ora_profile::database::packages::list: 
   gcc: {}

@@ -11,10 +11,10 @@ hierarchy:
       - "nodes/%{hostname}.yaml" 
       
   - name: "Version data for all version 12.1 versions."
-    data_hash: 'easy_type::versioned_data'
+    lookup_key: 'easy_type::versioned_data'
     path: versions/121.yaml
     options:
-        variable: ora_profile::database::version
+        version_key: ora_profile::database::version
         specification:
           - '>= 12.1'
           - '< 12.2'
