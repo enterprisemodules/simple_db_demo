@@ -9,6 +9,8 @@ role: role::oradb::simple_db
 #  Class overrides and additions
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::rman_config:                                       ~
+ora_profile::database::fact_caching::enabled:                             true
 
 
 # ------------------------------------------------------------------------------
@@ -16,8 +18,8 @@ role: role::oradb::simple_db
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::dbname:                                            DB190
-ora_profile::database::version:                                           19.0.0.0
+ora_profile::database::dbname:                                            DB210
+ora_profile::database::version:                                           21.0.0.0
 ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
 ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
 
@@ -28,11 +30,17 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_software::database_type:                        EE
-ora_profile::database::db_software::file_name:                            LINUX.X64_193000_db_home
+ora_profile::database::db_software::file_name:                            LINUX.X64_213000_db_home
 ora_profile::database::db_software::dirs:
-  - /u01/app/oracle/product/21.0.0.0
-  - /u01/app/oracle/product/18.0.0.0
-  - /u01/app/oracle/product/12.2.0.1
+- /u01/app/oracle/product/19.0.0.0
+- /u01/app/oracle/product/18.0.0.0
+- /u01/app/oracle/product/12.2.0.1
+- /u01/app/oracle/product/12.1.0.2
+- /u03/backup
+- /u03/backup/DB122
+- /u03/backup/DB180
+- /u03/backup/DB190
+- /u03/backup/DB210
 ora_profile::database::db_software::oracle_home:
   21cDEFAULT_HOME:
     version:     21.0.0.0
@@ -42,6 +50,10 @@ ora_profile::database::db_software::oracle_home:
     version:     19.0.0.0
     file:        LINUX.X64_193000_db_home
     oracle_home: /u01/app/oracle/product/19.0.0.0/db_home1
+  19cADDITIONAL_HOME:
+    version:     19.0.0.0
+    file:        LINUX.X64_193000_db_home
+    oracle_home: /u01/app/oracle/product/19.0.0.0/db_home2
   18cADDITIONAL_HOME:
     version:     18.0.0.0
     file:        LINUX.X64_180000_db_home
@@ -50,6 +62,10 @@ ora_profile::database::db_software::oracle_home:
     version:     12.2.0.1
     file:        linuxx64_12201_database
     oracle_home: /u01/app/oracle/product/12.2.0.1/db_home1
+  12cADDITIONAL_HOME:
+    version:     12.1.0.2
+    file:        linuxamd64_12102_database
+    oracle_home: /u01/app/oracle/product/12.1.0.2/db_home1
 
 
 # ------------------------------------------------------------------------------
@@ -58,9 +74,18 @@ ora_profile::database::db_software::oracle_home:
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::level:                                 APR2021RU
-ora_profile::database::db_patches::opversion:                             12.2.0.1.25
+ora_profile::database::db_patches::level:                                 OCT2022RU
+ora_profile::database::db_patches::opversion:                             12.2.0.1.33
 ora_profile::database::db_patches::patch_list:
+  "/u01/app/oracle/product/19.0.0.0/db_home1:34416665-GIRU-19.17.0.0.221018":                       # GI Release Update 19.17.0.0.221018
+    source:                "%{::ora_profile::database::source}/p34416665_190000_Linux-x86-64.zip"
+    sub_patches:
+    - '34419443'
+    - '34444834'
+  "/u01/app/oracle/product/19.0.0.0/db_home1:34411846-OJVM-19.17.0.0.221018":
+    source:                "%{lookup('ora_profile::database::source')}/p34411846_190000_Linux-x86-64.zip"
+    sub_patches:
+    - '34411846'
   "/u01/app/oracle/product/18.0.0.0/db_home1:32524152":                                             # GI Release Update 18.14.0.0.210420
     source:                "%{::ora_profile::database::source}/p32524152_180000_Linux-x86-64.zip"
     sub_patches:
@@ -70,48 +95,108 @@ ora_profile::database::db_patches::patch_list:
     source:                "%{lookup('ora_profile::database::source')}/p32552752_180000_Linux-x86-64.zip"
     sub_patches:
     - '32552752'
-  "/u01/app/oracle/product/12.2.0.1/db_home1:32540149":                                             # GI Release Update 18.14.0.0.210420
-    source:                "%{::ora_profile::database::source}/p32540149_122010_Linux-x86-64.zip"
+  "/u01/app/oracle/product/12.2.0.1/db_home1:33583921-GIRU-12.2.0.1.220118":                         # GI Release Update 12.2.0.1.220118
+    source:                "%{::ora_profile::database::source}/p33583921_122010_Linux-x86-64.zip"
     sub_patches:
-    - '32507738'
-    - '31802727'
-  "/u01/app/oracle/product/12.2.0.1/db_home1:32473172-OJVM-12.2.0.1.210420":
-    source:                "%{lookup('ora_profile::database::source')}/p32473172_122010_Linux-x86-64.zip"
+    - '33587128'
+    - '33678030'
+  "/u01/app/oracle/product/12.2.0.1/db_home1:33561275-OJVM-12.2.0.1.220118":
+    source:                "%{lookup('ora_profile::database::source')}/p33561275_122010_Linux-x86-64.zip"
     sub_patches:
-    - '32473172'
+    - '33561275'
+  "/u01/app/oracle/product/12.1.0.2/db_home1:29698629-GIRU-12.1.0.2.190716":
+    source:                "%{lookup('ora_profile::database::source')}/p29698629_121020_Linux-x86-64.zip"
+    sub_patches:
+    - '29496791'
+    - '29509318'
 
 # ------------------------------------------------------------------------------
 #
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::db_definition::container_database:                  enabled
 ora_profile::database::db_definition::dbname:
   DB210:
-    oracle_home:      /u01/app/oracle/product/21.0.0.0/db_home1
+    oracle_home:        /u01/app/oracle/product/21.0.0.0/db_home1
     container_database: enabled
     init_ora_params:
-      dbname: DB210
+      dbname:     DB210
       compatible: '21.0.0.0'
     spfile_location:  /u01/app/oracle/product/21.0.0.0/db_home1/dbs
   DB190:
-    oracle_home:      /u01/app/oracle/product/19.0.0.0/db_home1
+    oracle_home:        /u01/app/oracle/product/19.0.0.0/db_home1
+    container_database: disabled
     init_ora_params:
-      dbname: DB190
+      dbname:     DB190
       compatible: '19.0.0.0'
     spfile_location:  /u01/app/oracle/product/19.0.0.0/db_home1/dbs
   DB180:
-    oracle_home:      /u01/app/oracle/product/18.0.0.0/db_home1
+    oracle_home:        /u01/app/oracle/product/18.0.0.0/db_home1
+    container_database: disabled
     init_ora_params:
-      dbname: DB180
+      dbname:     DB180
       compatible: '18.0.0.0'
     spfile_location:  /u01/app/oracle/product/18.0.0.0/db_home1/dbs
   DB122:
-    oracle_home:      /u01/app/oracle/product/12.2.0.1/db_home1
+    oracle_home:        /u01/app/oracle/product/12.2.0.1/db_home1
+    container_database: disabled
     init_ora_params:
-      dbname: DB122
+      dbname:     DB122
       compatible: '12.2.0.1'
     spfile_location:  /u01/app/oracle/product/12.2.0.1/db_home1/dbs
 
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::rman_config
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::rman_config::settings:
+  DB122:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    channel:
+      DISK:
+        '1': "FORMAT '/u03/backup/DB122/1_%U' MAXPIECESIZE 1024M RATE 1G"
+        '2': "FORMAT '/u03/backup/DB122/2_%U' MAXPIECESIZE 1024M RATE 1G"
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB122/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    rman_output: 'KEEP FOR 30 DAYS'
+  DB180:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB180/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    maxsetsize: 32G
+  DB190:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB190/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    encryption_algorithm: AES256
+  DB210:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB210/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    compression_algorithm: "'ZSTD' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD FALSE"
 
 # ------------------------------------------------------------------------------
 #

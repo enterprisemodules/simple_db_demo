@@ -28,7 +28,13 @@ profile::base::hosts::list:
     ip: 192.168.56.210
     host_aliases:
       - db210
+  cl211.example.com:
+    ip: 192.168.253.211
+    host_aliases:
+      - cl211
   dbxxx.example.com:
     ip: 192.168.56.200
     host_aliases:
       - dbxxx
+
+ora_profile::database::source:                                           /vagrant/modules/software/files
