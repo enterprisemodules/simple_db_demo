@@ -8,7 +8,8 @@ role: role::oradb::simple_db
 #  Class overrides and additions
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_patches:                                        skip
+ora_profile::database::rman_config:                                       ~
+ora_profile::database::fact_caching::enabled:                             true
 
 
 # ------------------------------------------------------------------------------
@@ -32,6 +33,18 @@ ora_profile::database::db_software::file_name:                            LINUX.
 ora_profile::database::db_software::dirs:
 - /u01/app/oracle/product
 - "/u01/app/oracle/product/%{lookup('ora_profile::database::version')}"
+- /u01/backup
+- /u01/backup/DB180
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_patches
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_patches::level:                                 APR2021RU
+ora_profile::database::db_patches::include_ojvm:                          true
+ora_profile::database::db_patches::opversion:                             12.2.0.1.33
 
 
 # ------------------------------------------------------------------------------
@@ -39,7 +52,24 @@ ora_profile::database::db_software::dirs:
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
-#ora_profile::database::db_definition::init_ora_template:                  "profile/init.ora.%{lookup('ora_profile::database::version')}.erb"
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::rman_config
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::rman_config::settings:
+  DB180:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB180/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    maxsetsize: 32G
 
 
 # ------------------------------------------------------------------------------

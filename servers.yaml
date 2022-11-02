@@ -3,7 +3,7 @@
 # The default settings for all nodes
 #
 defaults:
-  domain_name:     example.com
+  domain_name:      example.com
   cpucount:         1
   needs_storage:    false
   additional_hosts:
@@ -37,7 +37,7 @@ pe-dbmaster:
   ram:              3072
   type:             pe-master
   virtualboxorafix: false
-  puppet_installer: puppet-enterprise-2021.3.0-el-8-x86_64/puppet-enterprise-installer
+  puppet_installer: puppet-enterprise-2021.5.0-el-8-x86_64/puppet-enterprise-installer
 
 #
 # All masterless nodes
@@ -59,40 +59,67 @@ ml-db121:
 ml-db122:
   public_ip:        '192.168.56.122'
   software_files:
-    - linuxx64_12201_database.zip
-    - p6880880_121010_Linux-x86-64.zip
-    - p27468969_122010_Linux-x86-64.zip
+  - linuxx64_12201_database.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
+  - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM
 
 ml-db180:
   public_ip:        '192.168.56.180'
   software_files:
-    - LINUX.X64_180000_db_home.zip
+  - LINUX.X64_180000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
+  - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
 
 ml-db190:
   public_ip:        '192.168.56.190'
   software_files:
-    - LINUX.X64_193000_db_home.zip
+  - LINUX.X64_193000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
 
 ml-db210:
+  box:              enterprisemodules/ol-7.7-x86_64-nocm
   public_ip:        '192.168.56.210'
   software_files:
-    - LINUX.X64_213000_db_home.zip
+  - LINUX.X64_213000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
+
+ml-cl211:
+  public_ip:        '192.168.253.211'
+  software_files:
+    - LINUX.X64_213000_client.zip
 
 ml-dbxxx:
   public_ip:        '192.168.56.200'
-  ram:              7168
+  cpucount:         2
+  ram:              10240
   software_files:
-    - LINUX.X64_213000_db_home.zip        # 21c oracle home
-    - LINUX.X64_193000_db_home.zip        # 19c oracle home
-    - LINUX.X64_180000_db_home.zip        # 18c oracle home
-    - linuxx64_12201_database.zip         # 12cR2 oracle home
-    - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.25
-    - p32545008_190000_Linux-x86-64.zip   # GIRU-19.11.0.0.210420
-    - p32399816_190000_Linux-x86-64.zip   # OJVM-19.11.0.0.210420
-    - p32524152_180000_Linux-x86-64.zip   # GIRU-18.14.0.0.210420
-    - p32552752_180000_Linux-x86-64.zip   # OJVM-18.14.0.0.210420
-    - p32540149_122010_Linux-x86-64.zip   # GIRU-12.2.0.1.210420
-    - p32473172_122010_Linux-x86-64.zip   # OJVM-12.2.0.1.210420
+  - LINUX.X64_213000_db_home.zip        # 21c oracle home
+  - LINUX.X64_193000_db_home.zip        # 19c oracle home
+  - LINUX.X64_180000_db_home.zip        # 18c oracle home
+  - linuxx64_12201_database.zip         # 12cR2 oracle home
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
+  - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
+  - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
+  - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
+  - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
+  - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM
+
+ml-wincl190:
+  public_ip:        '192.168.56.212'
+  protocol:         winrm
+  box:              mrlesmithjr/windows2019
+  cpucount:         2
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_client_home.zip
+    - puppet-agent-6.4.2-x64.msi
 
 ml-windb180:
   public_ip:        '192.168.56.181'
@@ -122,37 +149,47 @@ pe-db121:
 pe-db122:
   public_ip:        '192.168.56.122'
   software_files:
-    - linuxx64_12201_database.zip
-    - p6880880_121010_Linux-x86-64.zip
-    - p27468969_122010_Linux-x86-64.zip
+  - linuxx64_12201_database.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
+  - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM
 
 pe-db180:
   public_ip:        '192.168.56.180'
   software_files:
-    - LINUX.X64_180000_db_home.zip
+  - LINUX.X64_180000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
+  - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
 
 pe-db190:
   public_ip:        '192.168.56.190'
   software_files:
-    - LINUX.X64_193000_db_home.zip
+  - LINUX.X64_193000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
 
 pe-db210:
   public_ip:        '192.168.56.210'
   software_files:
-    - LINUX.X64_213000_db_home.zip
+  - LINUX.X64_213000_db_home.zip
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
 
 pe-dbxxx:
   public_ip:        '192.168.56.200'
   ram:              7168
   software_files:
-    - LINUX.X64_213000_db_home.zip        # 21c oracle home
-    - LINUX.X64_193000_db_home.zip        # 19c oracle home
-    - LINUX.X64_180000_db_home.zip        # 18c oracle home
-    - linuxx64_12201_database.zip         # 12cR2 oracle home
-    - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.25
-    - p32545008_190000_Linux-x86-64.zip   # GIRU-19.11.0.0.210420
-    - p32399816_190000_Linux-x86-64.zip   # OJVM-19.11.0.0.210420
-    - p32524152_180000_Linux-x86-64.zip   # GIRU-18.14.0.0.210420
-    - p32552752_180000_Linux-x86-64.zip   # OJVM-18.14.0.0.210420
-    - p32540149_122010_Linux-x86-64.zip   # GIRU-12.2.0.1.210420
-    - p32473172_122010_Linux-x86-64.zip   # OJVM-12.2.0.1.210420
+  - LINUX.X64_213000_db_home.zip        # 21c oracle home
+  - LINUX.X64_193000_db_home.zip        # 19c oracle home
+  - LINUX.X64_180000_db_home.zip        # 18c oracle home
+  - linuxx64_12201_database.zip         # 12cR2 oracle home
+  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
+  - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
+  - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
+  - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
+  - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
+  - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM

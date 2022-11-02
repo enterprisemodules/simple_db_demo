@@ -15,6 +15,7 @@ lookup_options:
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::source: puppet:///modules/software
+ora_profile::database::source:                                            puppet:///modules/software
+ora_profile::database::enable_fact_caching:                               true
 
 easy_type::generate_password_mode: development
