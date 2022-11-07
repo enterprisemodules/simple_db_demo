@@ -29,12 +29,36 @@ profile::base::hosts::list:
     host_aliases:
       - db210
   cl211.example.com:
-    ip: 192.168.253.211
+    ip: 192.168.56.211
     host_aliases:
       - cl211
   dbxxx.example.com:
     ip: 192.168.56.200
     host_aliases:
       - dbxxx
+  em1215.example.com:
+    ip: 192.168.56.120
+    host_aliases:
+      - em1215
+  em1310.example.com:
+    ip: 192.168.56.131
+    host_aliases:
+      - em1310
+  em1320.example.com:
+    ip: 192.168.56.132
+    host_aliases:
+      - em1320
+  em1330.example.com:
+    ip: 192.168.56.133
+    host_aliases:
+      - em1330
+  em1340.example.com:
+    ip: 192.168.56.134
+    host_aliases:
+      - em1340
+  em1350.example.com:
+    ip: 192.168.56.135
+    host_aliases:
+      - em1350
 
 ora_profile::database::source:                                           /vagrant/modules/software/files
