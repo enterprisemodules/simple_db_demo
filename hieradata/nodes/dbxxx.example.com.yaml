@@ -35,7 +35,7 @@ ora_profile::database::db_software::dirs:
 - /u01/app/oracle/product/19.0.0.0
 - /u01/app/oracle/product/18.0.0.0
 - /u01/app/oracle/product/12.2.0.1
-- /u01/app/oracle/product/12.1.0.2
+# - /u01/app/oracle/product/12.1.0.2
 - /u03/backup
 - /u03/backup/DB122
 - /u03/backup/DB180
@@ -62,10 +62,10 @@ ora_profile::database::db_software::oracle_home:
     version:     12.2.0.1
     file:        linuxx64_12201_database
     oracle_home: /u01/app/oracle/product/12.2.0.1/db_home1
-  12cADDITIONAL_HOME:
-    version:     12.1.0.2
-    file:        linuxamd64_12102_database
-    oracle_home: /u01/app/oracle/product/12.1.0.2/db_home1
+  # 12cADDITIONAL_HOME:
+  #   version:     12.1.0.2
+  #   file:        linuxamd64_12102_database
+  #   oracle_home: /u01/app/oracle/product/12.1.0.2/db_home1
 
 
 # ------------------------------------------------------------------------------
@@ -104,11 +104,11 @@ ora_profile::database::db_patches::patch_list:
     source:                "%{lookup('ora_profile::database::source')}/p33561275_122010_Linux-x86-64.zip"
     sub_patches:
     - '33561275'
-  "/u01/app/oracle/product/12.1.0.2/db_home1:29698629-GIRU-12.1.0.2.190716":
-    source:                "%{lookup('ora_profile::database::source')}/p29698629_121020_Linux-x86-64.zip"
-    sub_patches:
-    - '29496791'
-    - '29509318'
+  # "/u01/app/oracle/product/12.1.0.2/db_home1:29698629-GIRU-12.1.0.2.190716":
+  #   source:                "%{lookup('ora_profile::database::source')}/p29698629_121020_Linux-x86-64.zip"
+  #   sub_patches:
+  #   - '29496791'
+  #   - '29509318'
 
 # ------------------------------------------------------------------------------
 #
