@@ -94,4 +94,3 @@ db121_demo_check:
     - mkdir -p modules/software/files
     - cp ~/software/linuxamd64_12102_database_1of2.zip ./modules/software/files/  # 12c oracle home
     - cp ~/software/linuxamd64_12102_database_2of2.zip ./modules/software/files/  # 12c oracle home
-    
