@@ -60,7 +60,7 @@ ml-db122:
   public_ip:        '192.168.56.122'
   software_files:
   - linuxx64_12201_database.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM
 
@@ -68,7 +68,7 @@ ml-db180:
   public_ip:        '192.168.56.180'
   software_files:
   - LINUX.X64_180000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
   - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
 
@@ -76,7 +76,7 @@ ml-db190:
   public_ip:        '192.168.56.190'
   software_files:
   - LINUX.X64_193000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
 
@@ -84,7 +84,7 @@ ml-db210:
   public_ip:        '192.168.56.210'
   software_files:
   - LINUX.X64_213000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
 
 ml-cl211:
@@ -101,7 +101,7 @@ ml-dbxxx:
   - LINUX.X64_193000_db_home.zip        # 19c oracle home
   - LINUX.X64_180000_db_home.zip        # 18c oracle home
   - linuxx64_12201_database.zip         # 12cR2 oracle home
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
   - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
@@ -150,7 +150,7 @@ pe-db122:
   public_ip:        '192.168.56.122'
   software_files:
   - linuxx64_12201_database.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p33583921_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip   # 12cR2 JAN2022RU OJVM
 
@@ -158,7 +158,7 @@ pe-db180:
   public_ip:        '192.168.56.180'
   software_files:
   - LINUX.X64_180000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p32524152_180000_Linux-x86-64.zip   # 18c APR2021RU
   - p32552752_180000_Linux-x86-64.zip   # 18c APR2021RU OJVM
 
@@ -166,7 +166,7 @@ pe-db190:
   public_ip:        '192.168.56.190'
   software_files:
   - LINUX.X64_193000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
 
@@ -174,7 +174,7 @@ pe-db210:
   public_ip:        '192.168.56.210'
   software_files:
   - LINUX.X64_213000_db_home.zip
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
 
 pe-dbxxx:
@@ -186,7 +186,7 @@ pe-dbxxx:
   - LINUX.X64_193000_db_home.zip        # 19c oracle home
   - LINUX.X64_180000_db_home.zip        # 18c oracle home
   - linuxx64_12201_database.zip         # 12cR2 oracle home
-  - p6880880_122010_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64.zip    # OPatch upgrade version 12.2.0.1.33
   - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
   - p34416665_190000_Linux-x86-64.zip   # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM

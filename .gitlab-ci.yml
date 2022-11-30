@@ -19,7 +19,7 @@ multi_home_and_db_demo_check:
     - cp ~/software/LINUX.X64_193000_db_home.zip      ./modules/software/files/  # 19c oracle home
     - cp ~/software/LINUX.X64_180000_db_home.zip      ./modules/software/files/  # 18c oracle home
     - cp ~/software/linuxx64_12201_database.zip       ./modules/software/files/  # 12cR2 oracle home
-    - cp ~/software/p6880880_122010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
+    - cp ~/software/p6880880_190000_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
     - cp ~/software/p34526142_210000_Linux-x86-64.zip ./modules/software/files/  # 21c OCT2022RU
     - cp ~/software/p34416665_190000_Linux-x86-64.zip ./modules/software/files/  # 19c OCT2022RU
     - cp ~/software/p34411846_190000_Linux-x86-64.zip ./modules/software/files/  # 19c OCT2022RU OJVM
@@ -38,7 +38,7 @@ db210_demo_check:
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - mkdir -p modules/software/files
     - cp ~/software/LINUX.X64_213000_db_home.zip      ./modules/software/files/  # 21c oracle home
-    - cp ~/software/p6880880_122010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
+    - cp ~/software/p6880880_190000_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
     - cp ~/software/p34526142_210000_Linux-x86-64.zip ./modules/software/files/  # 21c OCT2022RU
 
 db190_demo_check:
@@ -51,7 +51,7 @@ db190_demo_check:
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - mkdir -p modules/software/files
     - cp ~/software/LINUX.X64_193000_db_home.zip      ./modules/software/files/  # 19c oracle home
-    - cp ~/software/p6880880_122010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
+    - cp ~/software/p6880880_190000_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
     - cp ~/software/p34416665_190000_Linux-x86-64.zip ./modules/software/files/  # 19c OCT2022RU
     - cp ~/software/p34411846_190000_Linux-x86-64.zip ./modules/software/files/  # 19c OCT2022RU OJVM
 
@@ -65,7 +65,7 @@ db180_demo_check:
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - mkdir -p modules/software/files
     - cp ~/software/LINUX.X64_180000_db_home.zip      ./modules/software/files/  # 18c oracle home
-    - cp ~/software/p6880880_122010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
+    - cp ~/software/p6880880_190000_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
     - cp ~/software/p32524152_180000_Linux-x86-64.zip ./modules/software/files/  # 18c APR2021RU
     - cp ~/software/p32552752_180000_Linux-x86-64.zip ./modules/software/files/  # 18c APR2021RU OJVM
 

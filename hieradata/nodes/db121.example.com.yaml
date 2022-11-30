@@ -29,11 +29,3 @@ ora_profile::database::oracle_home:                                       /u01/a
 # ------------------------------------------------------------------------------
 ora_profile::database::db_software::database_type:                        EE
 ora_profile::database::db_software::file_name:                            linuxamd64_12102_database
-
-
-# ------------------------------------------------------------------------------
-#
-#  Settings for database::db_definition
-#
-# ------------------------------------------------------------------------------
-
