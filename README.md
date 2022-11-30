@@ -47,6 +47,21 @@ The software must be placed in `modules/software/files`. It must contain the nex
 
 - [puppet-enterprise-2021.5.0-el-8-x86_64.tar.gz (Extracted tar)](https://puppet.com/download-puppet-enterprise)
 
+### Multi-home multi-database
+
+- `LINUX.X64_213000_db_home.zip`      (21c oracle home)
+- `LINUX.X64_193000_db_home.zip`      (19c oracle home)
+- `LINUX.X64_180000_db_home.zip`      (18c oracle home)
+- `linuxx64_12201_database.zip`       (12cR2 oracle home)
+- `p6880880_122010_Linux-x86-64.zip`  (OPatch version 12.2.0.1.33)
+- `p34526142_210000_Linux-x86-64.zip` (21c OCT2022RU)
+- `p34416665_190000_Linux-x86-64.zip` (19c OCT2022RU)
+- `p34411846_190000_Linux-x86-64.zip` (19c OCT2022RU OJVM)
+- `p32524152_180000_Linux-x86-64.zip` (18c APR2021RU)
+- `p32552752_180000_Linux-x86-64.zip` (18c APR2021RU OJVM)
+- `p33583921_122010_Linux-x86-64.zip` (12cR2 JAN2022RU)
+- `p33561275_122010_Linux-x86-64.zip` (12cR2 JAN2022RU OJVM)
+
 ### Oracle Database version 21.0.0.0
 
 - `LINUX.X64_213000_db_home.zip`
@@ -64,14 +79,15 @@ The software must be placed in `modules/software/files`. It must contain the nex
 
 - `LINUX.X64_180000_db_home.zip`
 - `p6880880_122010_Linux-x86-64.zip`  (OPatch version 12.2.0.1.33)
-- `p32524152_180000_Linux-x86-64.zip` (18c APR2021RU
-- `p32552752_180000_Linux-x86-64.zip` (18c APR2021RU OJVM
+- `p32524152_180000_Linux-x86-64.zip` (18c APR2021RU)
+- `p32552752_180000_Linux-x86-64.zip` (18c APR2021RU OJVM)
 
 ### Oracle Database version 12.2.0.1
 
 - `linuxx64_12201_database.zip`
 - `p6880880_122010_Linux-x86-64.zip`  (OPatch version 12.2.0.1.33)
-- `p27468969_122010_Linux-x86-64.zip`
+- `p33583921_122010_Linux-x86-64.zip` (12cR2 JAN2022RU)
+- `p33561275_122010_Linux-x86-64.zip` (12cR2 JAN2022RU OJVM)
 
 ### Oracle Database version 12.1.0.2
 

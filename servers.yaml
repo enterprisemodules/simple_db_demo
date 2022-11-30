@@ -81,7 +81,6 @@ ml-db190:
   - p34411846_190000_Linux-x86-64.zip   # 19c OCT2022RU OJVM
 
 ml-db210:
-  box:              enterprisemodules/ol-7.7-x86_64-nocm
   public_ip:        '192.168.56.210'
   software_files:
   - LINUX.X64_213000_db_home.zip
@@ -142,6 +141,7 @@ pe-db112:
 
 pe-db121:
   public_ip:        '192.168.56.121'
+  box:              enterprisemodules/ol-7.7-x86_64-nocm
   software_files:
     - linuxamd64_12102_database_1of2.zip
     - linuxamd64_12102_database_2of2.zip
@@ -179,7 +179,8 @@ pe-db210:
 
 pe-dbxxx:
   public_ip:        '192.168.56.200'
-  ram:              7168
+  cpucount:         2
+  ram:              10240
   software_files:
   - LINUX.X64_213000_db_home.zip        # 21c oracle home
   - LINUX.X64_193000_db_home.zip        # 19c oracle home
