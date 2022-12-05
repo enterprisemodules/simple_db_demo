@@ -79,7 +79,7 @@ db122_demo_check:
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - mkdir -p modules/software/files
     - cp ~/software/linuxx64_12201_database.zip       ./modules/software/files/  # 12cR2 oracle home
-    - cp ~/software/p6880880_121010_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
+    - cp ~/software/p6880880_190000_Linux-x86-64.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
     - cp ~/software/p33583921_122010_Linux-x86-64.zip ./modules/software/files/  # 12cR2 JAN2022RU
     - cp ~/software/p33561275_122010_Linux-x86-64.zip ./modules/software/files/  # 12cR2 JAN2022RU OJVM
 
