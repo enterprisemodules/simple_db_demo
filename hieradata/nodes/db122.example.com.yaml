@@ -28,7 +28,6 @@ ora_profile::database::cis_controls::db_version:                          db12c 
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::database_type:                        EE
 ora_profile::database::db_software::file_name:                            linuxx64_12201_database
 ora_profile::database::db_software::dirs:
 - /u01/app/oracle/product
@@ -42,6 +41,7 @@ ora_profile::database::db_software::dirs:
 #  Settings for database::db_patches
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
 ora_profile::database::db_patches::level:                                 JAN2022RU
 ora_profile::database::db_patches::include_ojvm:                          true
 ora_profile::database::db_patches::opversion:                             12.2.0.1.33

@@ -29,7 +29,6 @@ ora_profile::database::source:                                            "C:\\v
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::database_type:                        EE
 ora_profile::database::db_software::file_name:                            winx64_12201_database
 
 

@@ -29,7 +29,6 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::database_type:                        EE
 ora_profile::database::db_software::file_name:                            LINUX.X64_213000_db_home
 ora_profile::database::db_software::dirs:
 - /u01/app/oracle/product/19.0.0.0
@@ -73,6 +72,7 @@ ora_profile::database::db_software::oracle_home:
 #  Settings for database::db_patches
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
 ora_profile::database::db_patches::include_ojvm:                          true
 ora_profile::database::db_patches::level:                                 OCT2022RU
 ora_profile::database::db_patches::opversion:                             12.2.0.1.33
@@ -203,7 +203,7 @@ ora_profile::database::rman_config::settings:
 #  Settings for database::db_listener
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_listener::sqlnet_version:                       '19.0'
+ora_profile::database::db_listener::sqlnet_version:                       '21.0'
 
 
 # ------------------------------------------------------------------------------
