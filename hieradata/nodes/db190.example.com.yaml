@@ -20,8 +20,6 @@ ora_profile::database::fact_caching::enabled:                             true
 # ------------------------------------------------------------------------------
 ora_profile::database::dbname:                                            DB190
 ora_profile::database::version:                                           19.0.0.0
-ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
-ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
 
 
 # ------------------------------------------------------------------------------
@@ -29,10 +27,7 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::file_name:                            LINUX.X64_193000_db_home
 ora_profile::database::db_software::dirs:
-- /u01/app/oracle/product
-- "/u01/app/oracle/product/%{lookup('ora_profile::database::version')}"
 - /u01/backup
 - /u01/backup/DB190
 
@@ -45,14 +40,6 @@ ora_profile::database::db_software::dirs:
 ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
 ora_profile::database::db_patches::level:                                 OCT2022RU
 ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::opversion:                             12.2.0.1.33
-
-
-# ------------------------------------------------------------------------------
-#
-#  Settings for database::db_definition
-#
-# ------------------------------------------------------------------------------
 
 
 # ------------------------------------------------------------------------------
@@ -75,18 +62,17 @@ ora_profile::database::rman_config::settings:
 
 # ------------------------------------------------------------------------------
 #
-#  Settings for database::db_listener
-#
-# ------------------------------------------------------------------------------
-ora_profile::database::db_listener::sqlnet_version:                       '19.0'
-
-#
 # CIS parameters
 #
+# ------------------------------------------------------------------------------
 ora_cis::controls::failed_login_attempts_is_less_than_or_equal_to_5::test_1::preferred_value: 3
+
+
+# ------------------------------------------------------------------------------
 #
 # This is the full skip list for database::cis_controls
 #
+# ------------------------------------------------------------------------------
 ora_profile::database::cis_controls::skip_list: []
   # - admin_restrictions_is_set_to_on
   # - all_audit_option_on_sys_aud_is_enabled

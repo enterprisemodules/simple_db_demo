@@ -20,8 +20,6 @@ ora_profile::database::fact_caching::enabled:                             true
 # ------------------------------------------------------------------------------
 ora_profile::database::dbname:                                            DB210
 ora_profile::database::version:                                           21.0.0.0
-ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
-ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
 
 
 # ------------------------------------------------------------------------------
@@ -29,7 +27,6 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::file_name:                            LINUX.X64_213000_db_home
 ora_profile::database::db_software::dirs:
 - /u01/backup
 - /u01/backup/DB210
@@ -41,17 +38,7 @@ ora_profile::database::db_software::dirs:
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
-ora_profile::database::db_patches::opversion:                             12.2.0.1.33
 ora_profile::database::db_patches::level:                                 OCT2022RU
-ora_profile::database::db_patches::include_ojvm:                          false
-
-
-# ------------------------------------------------------------------------------
-#
-#  Settings for database::db_definition
-#
-# ------------------------------------------------------------------------------
-ora_profile::database::db_definition::container_database:                  enabled
 
 
 # ------------------------------------------------------------------------------
@@ -74,14 +61,6 @@ ora_profile::database::rman_config::settings:
 
 # ------------------------------------------------------------------------------
 #
-#  Settings for database::db_listener
-#
-# ------------------------------------------------------------------------------
-ora_profile::database::db_listener::sqlnet_version:                       '21.0'
-
-
-# ------------------------------------------------------------------------------
-#
 #  Settings for database::db_startup
 #
 # ------------------------------------------------------------------------------
@@ -92,7 +71,6 @@ ora_profile::database::db_listener::sqlnet_version:                       '21.0'
 #   user:        "%{lookup('ora_profile::database::os_user')}"
 #   group:       "%{lookup('ora_profile::database::dba_group')}"
 #   limits:      "%{alias('ora_profile::database::limits::list')}"
-
 
 
 # ------------------------------------------------------------------------------

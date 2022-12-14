@@ -10,15 +10,6 @@ hierarchy:
       - "nodes/%{trusted.certname}.yaml"  # File path, relative to datadir.
       - "nodes/%{hostname}.yaml"
 
-  - name: "Version data for all version 12.1 versions."
-    lookup_key: 'easy_type::versioned_data'
-    path: versions/121.yaml
-    options:
-        version_key: ora_profile::database::version
-        specification:
-          - '>= 12.1'
-          - '< 22.0'
-
   - name: "Deployment Zone" # Uses custom facts.
     path: "deployment_zones/%{::deployment_zone}.yaml"
 
