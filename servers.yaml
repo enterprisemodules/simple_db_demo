@@ -85,7 +85,7 @@ ml-db210:
   software_files:
   - LINUX.X64_213000_db_home.zip
   - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p34526142_210000_Linux-x86-64.zip   # 21c OCT2022RU
+  - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
 
 ml-cl211:
   public_ip:        '192.168.253.211'

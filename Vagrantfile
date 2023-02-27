@@ -234,7 +234,7 @@ end
 def configure_disks(vb, server, hostname, name)
   vminfo = vm_info(name)
   disks = server['disks'] || {}
-  unless vminfo =~ /Storage Controller Name \(1\): *SATA Controller/
+  unless vminfo =~ /Storage Controller Name \(1\): *SATA Controller/ || vminfo =~ /#\d+: 'SATA Controller'/
     # puts "Attaching SATA Controller"
     vb.customize [
       'storagectl', :id,
