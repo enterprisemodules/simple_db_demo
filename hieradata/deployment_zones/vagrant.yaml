@@ -36,6 +36,22 @@ profile::base::hosts::list:
     ip: 192.168.56.200
     host_aliases:
       - dbxxx
+  wincl190.example.com:
+    ip: 192.168.56.212
+    host_aliases:
+      - wincl190
+  windb180.example.com:
+    ip: 192.168.56.181
+    host_aliases:
+      - windb180
+  windb190.example.com:
+    ip: 192.168.56.183
+    host_aliases:
+      - windb190
+  windows.example.com:
+    ip: 192.168.56.182
+    host_aliases:
+      - windows
   em1215.example.com:
     ip: 192.168.56.120
     host_aliases:
@@ -62,3 +78,4 @@ profile::base::hosts::list:
       - em1350
 
 ora_profile::database::source:                                           /vagrant/modules/software/files
+easy_type::extended_debugging:  true

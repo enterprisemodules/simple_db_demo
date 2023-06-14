@@ -88,7 +88,7 @@ ml-db210:
   - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
 
 ml-cl211:
-  public_ip:        '192.168.253.211'
+  public_ip:        '192.168.56.211'
   software_files:
     - LINUX.X64_213000_client.zip
 
@@ -113,22 +113,45 @@ ml-dbxxx:
 ml-wincl190:
   public_ip:        '192.168.56.212'
   protocol:         winrm
-  box:              mrlesmithjr/windows2019
+  box:              gusztavvargadr/windows-server
   cpucount:         2
   ram:              8192
   software_files:
     - WINDOWS.X64_193000_client_home.zip
-    - puppet-agent-6.4.2-x64.msi
 
 ml-windb180:
   public_ip:        '192.168.56.181'
   protocol:         winrm
-  box:              mrlesmithjr/windows2019
+  box:              gusztavvargadr/windows-server
   cpucount:         4
   ram:              8192
   software_files:
     - WINDOWS.X64_180000_db_home.zip
-    - puppet-agent-6.4.2-x64.msi
+
+ml-windb190:
+  public_ip:        '192.168.56.183'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
+    - p35348034_190000_MSWIN-x86-64.zip             # 19c JUL2023RU
+    - p35354406_190000_MSWIN-x86-64.zip             # 19c JUL2023RU OJVM
+    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
+
+ml-windows:
+  public_ip:        '192.168.56.182'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
+    - p35046439_190000_MSWIN-x86-64.zip             # 19c APR2023RU
+    - p35050341_190000_MSWIN-x86-64.zip             # 19c APR2023RU OJVM
+    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
+
 #
 # All Puppet Agent nodes
 #

@@ -1,6 +1,5 @@
 # TODO: Docs
-class profile::base()
-{
+class profile::base {
   contain "profile::base::${::deployment_zone}"
   contain profile::base::config
   contain profile::base::hosts

@@ -1,0 +1,7 @@
+---
+role: role::oradb::simple_client
+
+ora_profile::client::software::puppet_download_mnt_point:   "C:\\vagrant\\modules\\software\\files"
+
+ora_profile::client::software::file:                        WINDOWS.X64_193000_client_home.zip
+ora_profile::client::software::version:                     19.0.0.0

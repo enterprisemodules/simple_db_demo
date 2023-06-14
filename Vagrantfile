@@ -161,9 +161,10 @@ def masterless_setup(server, srv, hostname)
       @provisioners << { shell: { inline: facter_overrides(server['custom_facts'], 'windows'),
                                   name: 'facter_overrides' } }
     end
-    @provisioners << { puppet: { manifests_path: ['vm', 'c:\\vagrant\\manifests'],
-                                 manifest_file: 'site.pp',
-                                 options: '--test' } }
+    @provisioners << { shell: { inline: %(Set-ExecutionPolicy Bypass -Scope Process -Force
+                                          cd c:\\vagrant\\vm-scripts
+                                          .\\run_puppet.ps1),
+                                name: 'run puppet' } }
   end
 end
 
