@@ -16,6 +16,7 @@ lookup_options:
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::source:                                            puppet:///modules/software
+ora_profile::client::software::puppet_download_mnt_point:                 puppet:///modules/software
 ora_profile::database::enable_fact_caching:                               true
 
 easy_type::generate_password_mode: development

@@ -1,0 +1,7 @@
+---
+deployment_zone: vagrant
+
+role: role::oradb::client
+
+ora_profile::client::software::file:  LINUX.X64_193000_client.zip
+ora_profile::client::software::version: 19.0.0.0
