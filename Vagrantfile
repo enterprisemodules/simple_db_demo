@@ -481,7 +481,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       @provisioners.each do |provisioner|
         provisioner.each do |type, options|
-          srv.vm.provision type, options
+          srv.vm.provision type, **options.transform_keys(&:to_sym)
         end
       end
     end
