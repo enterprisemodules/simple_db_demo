@@ -1,0 +1,63 @@
+---
+# deployment_zone: vagrant
+role: role::oradb::simple_db
+
+# ------------------------------------------------------------------------------
+#
+#  Class overrides and additions
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_startup:                                        skip
+ora_profile::database::db_service:                                        skip
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::dbname:                                            DB190
+ora_profile::database::version:                                           '19.0.0.0'
+ora_profile::database::oracle_home:                                       "C:\\u01\\app\\oracle\\product\\%{lookup('ora_profile::database::version')}\\dbhome_1"
+ora_profile::database::oracle_base:                                       "C:\\u01\\app\\oracle"
+ora_profile::database::download_dir:                                      "C:\\windows\\temp"
+ora_profile::database::source:                                            "C:\\vagrant\\modules\\software\\files"
+ora_profile::database::fact_caching::enabled:                             true
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_software
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_software::file_name:                            WINDOWS.X64_193000_db_home
+ora_profile::database::db_software::bash_profile:                         false
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_patches
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_patches::level:                                 APR2023RU
+ora_profile::database::db_patches::include_ojvm:                          true
+ora_profile::database::db_patches::opversion:                             12.2.0.1.38
+ora_profile::database::db_patches::logoutput:                             true
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_definition
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_definition::data_file_destination:              "C:\\u02\\oradata"
+ora_profile::database::db_definition::db_recovery_file_dest:              "C:\\u03\\fast_recovery_area"
+ora_profile::database::db_definition::dbdomain:                           ~
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_listener
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_listener::sqlnet_version:                       '19.0'
