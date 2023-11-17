@@ -3,7 +3,7 @@ mod 'puppetlabs-pwshlib'
 mod 'puppetlabs-concat'
 mod 'stm-debconf'
 mod 'saz-limits'
-mod 'petems-swap_file', :git => 'https://github.com/enterprisemodules/petems-swap_file.git'
+mod 'petems-swap_file', :git => 'https://github.com/enterprisemodules/petems-swap_file.git', ref: 'master'
 mod 'puppet-archive'
 mod 'saz-timezone'
 mod 'ipcrm-echo'
@@ -22,11 +22,11 @@ mod 'puppetlabs-registry'
 #
 # The Enterprise Modules Oracle specific Modules
 #
-mod 'enterprisemodules-ora_config',  git: 'https://gitlab.com/enterprisemodules/ora_config.git'
-mod 'enterprisemodules-easy_type',   git: 'https://gitlab.com/enterprisemodules/easy_type_src.git'
-mod 'enterprisemodules-ora_install', git: 'https://gitlab.com/enterprisemodules/ora_install.git'
-mod 'enterprisemodules-ora_profile', git: 'https://gitlab.com/enterprisemodules/ora_profile.git'
-mod 'enterprisemodules-ora_secured', git: 'https://gitlab.com/enterprisemodules/ora_secured.git'
+mod 'enterprisemodules-ora_config',  git: 'https://gitlab.com/enterprisemodules/ora_config.git', ref: 'master'
+mod 'enterprisemodules-easy_type',   git: 'https://gitlab.com/enterprisemodules/easy_type_src.git', ref: 'master'
+mod 'enterprisemodules-ora_install', git: 'https://gitlab.com/enterprisemodules/ora_install.git', ref: 'master'
+mod 'enterprisemodules-ora_profile', git: 'https://gitlab.com/enterprisemodules/ora_profile.git', ref: 'master'
+mod 'enterprisemodules-ora_secured', git: 'https://gitlab.com/enterprisemodules/ora_secured.git', ref: 'master'
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #
