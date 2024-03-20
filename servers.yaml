@@ -222,3 +222,46 @@ pe-dbxxx:
   - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
   - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
+
+pe-wincl190:
+  public_ip:        '192.168.56.212'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         2
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_client_home.zip
+
+pe-windb180:
+  public_ip:        '192.168.56.181'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_180000_db_home.zip
+
+pe-windb190:
+  public_ip:        '192.168.56.183'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
+    - p35348034_190000_MSWIN-x86-64.zip             # 19c JUL2023RU
+    - p35354406_190000_MSWIN-x86-64.zip             # 19c JUL2023RU OJVM
+    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
+
+pe-windows:
+  public_ip:        '192.168.56.182'
+  protocol:         winrm
+  box:              gusztavvargadr/windows-server
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
+    - p35046439_190000_MSWIN-x86-64.zip             # 19c APR2023RU
+    - p35050341_190000_MSWIN-x86-64.zip             # 19c APR2023RU OJVM
+    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
+

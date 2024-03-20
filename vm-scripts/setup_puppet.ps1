@@ -10,7 +10,10 @@ if ([System.IO.File]::Exists("$Env:LOCALAPPDATA\setup_puppet.done")) {
 
 
     Write-Output 'Installing required puppet modules...'
+    [System.Environment]::SetEnvironmentVariable('SSL_CERT_DIR','C:\Program Files\Puppet Labs\Puppet\puppet\ssl\certs')
+    [System.Environment]::SetEnvironmentVariable('SSL_CERT_FILE','C:\Program Files\Puppet Labs\Puppet\puppet\ssl\cert.pem')
     Set-Location 'c:\vagrant'
+    $env:PATH += ';C:\Program Files\Git\bin'
     Invoke-Expression "& 'c:\Program Files\Puppet Labs\Puppet\puppet\bin\r10k.bat' puppetfile install"
     Write-Output 'Installing required puppet modules finished.'
 

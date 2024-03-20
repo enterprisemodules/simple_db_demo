@@ -29,6 +29,7 @@ class profile::base::vagrant {
     exec { 'disable windows defender':
       command  => 'Set-MpPreference -DisableArchiveScanning $true -DisableRealtimeMonitoring $true',
       provider => 'powershell',
+      unless   => '$Preferences = Get-MpPreference; If ($Preferences.DisableArchiveScanning -eq $true -And $Preferences.DisableRealtimeMonitoring -eq $true) {exit 0} Else {exit 1}',
     }
   }
 }

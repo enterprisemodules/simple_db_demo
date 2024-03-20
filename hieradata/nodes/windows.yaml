@@ -8,7 +8,7 @@ role: role::oradb::simple_db
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_startup:                                        skip
-ora_profile::database::db_service:                                        skip
+ora_profile::database::db_services:                                       skip
 
 
 # ------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ ora_profile::database::oracle_home:                                       "C:\\u
 ora_profile::database::oracle_base:                                       "C:\\u01\\app\\oracle"
 ora_profile::database::download_dir:                                      "C:\\windows\\temp"
 ora_profile::database::source:                                            "C:\\vagrant\\modules\\software\\files"
-ora_profile::database::fact_caching::enabled:                             true
+ora_profile::database::fact_caching::enabled:                             false
 
 
 # ------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ ora_profile::database::db_software::bash_profile:                         false
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches::level:                                 APR2023RU
 ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::opversion:                             12.2.0.1.38
+ora_profile::database::db_patches::opversion:                             12.2.0.1.37
 ora_profile::database::db_patches::logoutput:                             true
 
 
@@ -52,7 +52,7 @@ ora_profile::database::db_patches::logoutput:                             true
 # ------------------------------------------------------------------------------
 ora_profile::database::db_definition::data_file_destination:              "C:\\u02\\oradata"
 ora_profile::database::db_definition::db_recovery_file_dest:              "C:\\u03\\fast_recovery_area"
-ora_profile::database::db_definition::dbdomain:                           ~
+ora_profile::database::db_definition::dbdomain:                           example.com
 
 
 # ------------------------------------------------------------------------------
