@@ -41,7 +41,7 @@ ora_profile::database::db_software::bash_profile:                         false
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches::level:                                 APR2023RU
 ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::opversion:                             12.2.0.1.37
+ora_profile::database::db_patches::opversion:                             12.2.0.1.41
 ora_profile::database::db_patches::logoutput:                             true
 
 

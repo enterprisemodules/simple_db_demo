@@ -1,10 +1,8 @@
 # Docs
-class role::oradb::secure_db()
-{
+class role::oradb::secure_db {
+  contain profile::base
+  contain ora_profile::secured_database
 
-  contain ::profile::base
-  contain ::ora_profile::secured_database
-
-  Class['::profile::base']
-  -> Class['::ora_profile::secured_database']
+  Class['profile::base']
+  -> Class['ora_profile::secured_database']
 }

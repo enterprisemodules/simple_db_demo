@@ -1,7 +1,6 @@
 # This class will install a new ORACLE_HOME, so it can be patched
 # before the databases are switched to it.
-class profile::oracle::client (
-) {
+class profile::oracle::client {
   easy_type::debug_evaluation() # Show local variable on extended debug
 
   echo { 'Ensure Client Software 19.0.0.0 in c:\oracle\client\19.0.0.0':
