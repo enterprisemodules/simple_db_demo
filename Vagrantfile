@@ -122,7 +122,7 @@ def facter_overrides(facts, ostype)
     "echo -e '#{facter_overrides}' > /etc/profile.d/facter_overrides.sh"
   else
     facter_overrides = facts.map { |key, value| "Write-Host #{key}=#{value}" }.join('`r')
-    "echo '#{facter_overrides}' > C:\ProgramData\PuppetLabs\facter\facts.d\facter_overrides.ps1"
+    "echo '#{facter_overrides}' > C:\\ProgramData\\PuppetLabs\\facter\\facts.d\\facter_overrides.ps1"
   end
 end
 
