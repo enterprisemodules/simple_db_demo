@@ -1,6 +1,7 @@
 mod 'puppetlabs-stdlib'
 mod 'puppetlabs-pwshlib'
 mod 'puppetlabs-concat'
+mod 'puppetlabs-host_core'
 mod 'stm-debconf'
 mod 'saz-limits'
 mod 'petems-swap_file', :git => 'https://github.com/enterprisemodules/petems-swap_file.git', ref: 'master'
@@ -26,7 +27,7 @@ mod 'enterprisemodules-ora_config'
 mod 'enterprisemodules-easy_type'
 mod 'enterprisemodules-ora_install'
 mod 'enterprisemodules-ora_profile'
-mod 'enterprisemodules-ora_secured'
+# mod 'enterprisemodules-ora_secured'
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #

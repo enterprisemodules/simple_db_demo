@@ -14,7 +14,7 @@ if ([System.IO.File]::Exists("$Env:LOCALAPPDATA\setup_puppet.done")) {
     [System.Environment]::SetEnvironmentVariable('SSL_CERT_FILE','C:\Program Files\Puppet Labs\Puppet\puppet\ssl\cert.pem')
     Set-Location 'c:\vagrant'
     $env:PATH += ';C:\Program Files\Git\bin'
-    Invoke-Expression "& 'c:\Program Files\Puppet Labs\Puppet\puppet\bin\r10k.bat' puppetfile install"
+    # Invoke-Expression "& 'c:\Program Files\Puppet Labs\Puppet\puppet\bin\r10k.bat' puppetfile install"
     Write-Output 'Installing required puppet modules finished.'
 
     #
@@ -33,5 +33,23 @@ if ([System.IO.File]::Exists("$Env:LOCALAPPDATA\setup_puppet.done")) {
     Write-Output 'Setting up Puppet manifest directories'
     New-Item -Path "C:\ProgramData\PuppetLabs\code\environments\production\manifests" -ItemType SymbolicLink -Value "c:\Vagrant\manifests" -Force
     Write-Output 'Puppet setup completed.'
+
+    #
+    # Precompile .NET/powershell assemblies
+    #
+    Write-Output 'Precompiling .NET/powershell assemblies'
+    $FrameworkDir=[Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
+    $NGENPath = Join-Path $FrameworkDir 'ngen.exe'
+
+    [AppDomain]::CurrentDomain.GetAssemblies() |
+        Where-Object Location -NotLike '' |
+        Select-Object -ExpandProperty Location |
+        ForEach-Object { & $NGENPath install """$_""" }
+
+    [AppDomain]::CurrentDomain.GetAssemblies() |
+        Where-Object Location -NotLike '' |
+        Select-Object -ExpandProperty Location |
+        ForEach-Object { & $NGENPath install """$_""" }
+
     New-Item -ItemType file $Env:LOCALAPPDATA\setup_puppet.done
 }
