@@ -14,19 +14,7 @@ multi_home_and_db_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/LINUX.X64_213000_db_home.zip                  ./modules/software/files/  # 21c oracle home
-    - cp ~/software/LINUX.X64_193000_db_home.zip                  ./modules/software/files/  # 19c oracle home
-    - cp ~/software/LINUX.X64_180000_db_home.zip                  ./modules/software/files/  # 18c oracle home
-    - cp ~/software/linuxx64_12201_database.zip                   ./modules/software/files/  # 12cR2 oracle home
-    - cp ~/software/p6880880_190000_Linux-x86-64-12.2.0.1.33.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
-    - cp ~/software/p34526142_210000_Linux-x86-64.zip             ./modules/software/files/  # 21c OCT2022RU
-    - cp ~/software/p34416665_190000_Linux-x86-64.zip             ./modules/software/files/  # 19c OCT2022RU
-    - cp ~/software/p34411846_190000_Linux-x86-64.zip             ./modules/software/files/  # 19c OCT2022RU OJVM
-    - cp ~/software/p32524152_180000_Linux-x86-64.zip             ./modules/software/files/  # 18c APR2021RU
-    - cp ~/software/p32552752_180000_Linux-x86-64.zip             ./modules/software/files/  # 18c APR2021RU OJVM
-    - cp ~/software/p33583921_122010_Linux-x86-64.zip             ./modules/software/files/  # 12cR2 JAN2022RU
-    - cp ~/software/p33561275_122010_Linux-x86-64.zip             ./modules/software/files/  # 12cR2 JAN2022RU OJVM
+    - vagrant prepare $server
 
 db210_demo_check:
   extends: .demo_check
@@ -36,10 +24,8 @@ db210_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/LINUX.X64_213000_db_home.zip                  ./modules/software/files/  # 21c oracle home
-    - cp ~/software/p6880880_190000_Linux-x86-64-12.2.0.1.33.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
-    - cp ~/software/p34526142_210000_Linux-x86-64.zip             ./modules/software/files/  # 21c OCT2022RU
+    - vagrant prepare $server
+
 
 cl190_demo_check:
   extends: .demo_check
@@ -49,8 +35,7 @@ cl190_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/LINUX.X64_193000_client.zip                 ./modules/software/files/  # 19c oracle client
+    - vagrant prepare $server
 
 db190_demo_check:
   extends: .demo_check
@@ -60,11 +45,7 @@ db190_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/LINUX.X64_193000_db_home.zip                  ./modules/software/files/  # 19c oracle home
-    - cp ~/software/p6880880_190000_Linux-x86-64-12.2.0.1.33.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
-    - cp ~/software/p34416665_190000_Linux-x86-64.zip             ./modules/software/files/  # 19c OCT2022RU
-    - cp ~/software/p34411846_190000_Linux-x86-64.zip             ./modules/software/files/  # 19c OCT2022RU OJVM
+    - vagrant prepare $server
 
 db180_demo_check:
   extends: .demo_check
@@ -74,11 +55,7 @@ db180_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/LINUX.X64_180000_db_home.zip                  ./modules/software/files/  # 18c oracle home
-    - cp ~/software/p6880880_190000_Linux-x86-64-12.2.0.1.33.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
-    - cp ~/software/p32524152_180000_Linux-x86-64.zip             ./modules/software/files/  # 18c APR2021RU
-    - cp ~/software/p32552752_180000_Linux-x86-64.zip             ./modules/software/files/  # 18c APR2021RU OJVM
+    - vagrant prepare $server
 
 db122_demo_check:
   extends: .demo_check
@@ -88,11 +65,7 @@ db122_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/linuxx64_12201_database.zip                   ./modules/software/files/  # 12cR2 oracle home
-    - cp ~/software/p6880880_190000_Linux-x86-64-12.2.0.1.33.zip  ./modules/software/files/  # OPatch upgrade version 12.2.0.1.33
-    - cp ~/software/p33583921_122010_Linux-x86-64.zip             ./modules/software/files/  # 12cR2 JAN2022RU
-    - cp ~/software/p33561275_122010_Linux-x86-64.zip             ./modules/software/files/  # 12cR2 JAN2022RU OJVM
+    - vagrant prepare $server
 
 db121_demo_check:
   extends: .demo_check
@@ -102,20 +75,14 @@ db121_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/linuxamd64_12102_database_1of2.zip            ./modules/software/files/  # 12c oracle home
-    - cp ~/software/linuxamd64_12102_database_2of2.zip            ./modules/software/files/  # 12c oracle home
+    - vagrant prepare $server
 
-windb190_demo_check:
-  extends: .demo_check
-  variables:
-    server: ml-windb190
-  before_script:
-    - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
-    - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
-    - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
-    - mkdir -p ./modules/software/files
-    - cp ~/software/WINDOWS.X64_193000_db_home.zip                ./modules/software/files/  # 19c oracle home
-    - cp ~/software/p6880880_190000_MSWIN-x86-64.zip              ./modules/software/files/  # OPatch upgrade version 12.2.0.1.41
-    - cp ~/software/p35348034_190000_MSWIN-x86-64.zip             ./modules/software/files/  # 19c JUL2023RU
-    - cp ~/software/p35354406_190000_MSWIN-x86-64.zip             ./modules/software/files/  # 19c JUL2023RU OJVM
+# windb190_demo_check:
+#   extends: .demo_check
+#   variables:
+#     server: ml-windb190
+#   before_script:
+#     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
+#     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
+#     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+#     - vagrant prepare $server

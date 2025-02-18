@@ -21,12 +21,12 @@ mod 'puppetlabs-powershell'
 mod 'puppetlabs-registry'
 #
 # The Enterprise Modules Oracle specific Modules
-#
-mod 'enterprisemodules-ora_config',  git: 'https://gitlab.com/enterprisemodules/ora_config.git', ref: 'master'
-mod 'enterprisemodules-easy_type',   git: 'https://gitlab.com/enterprisemodules/easy_type_src.git', ref: 'master'
-mod 'enterprisemodules-ora_install', git: 'https://gitlab.com/enterprisemodules/ora_install.git', ref: 'master'
-mod 'enterprisemodules-ora_profile', git: 'https://gitlab.com/enterprisemodules/ora_profile.git', ref: 'master'
-mod 'enterprisemodules-ora_secured', git: 'https://gitlab.com/enterprisemodules/ora_secured.git', ref: 'master'
+# 
+mod 'easy_type',   git: "https://gitlab-ci-token:#{ENV['CI_TOKEN']}@gitlab.com/enterprisemodules/easy_type_src.git", ref: 'master'
+mod 'ora_install', git: "https://gitlab-ci-token:#{ENV['CI_TOKEN']}@gitlab.com/enterprisemodules/ora_install.git", ref: 'master'
+mod 'ora_config',  git: "https://gitlab-ci-token:#{ENV['CI_TOKEN']}@gitlab.com/enterprisemodules/ora_config.git", ref: 'master'
+mod 'ora_secured', git: "https://gitlab-ci-token:#{ENV['CI_TOKEN']}@gitlab.com/enterprisemodules/ora_secured.git", ref: 'master'
+mod 'ora_profile', git: "https://gitlab.com/enterprisemodules/ora_profile.git", ref: 'master'
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #

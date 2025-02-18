@@ -1,104 +1,79 @@
----
 #
 # The default settings for all nodes
 #
 defaults:
   domain_name:      example.com
+  ip_start_address: 192.168.56.100
+  prefix:           db
   cpucount:         1
-  needs_storage:    false
-  additional_hosts:
-    dbmaster:
-      ip: 192.168.56.10
+  #
+  # Chose one of the boxes you like
+  #
+  # box:              enterprisemodules/ol-8.1-x86_64-nocm    # OracleLinux 8.1
+  # box:              enterprisemodules/ol-9.0-x86_64-nocm    # Oracle Linux 9.0
+  # box:              enterprisemodules/al-9.0-x86_64-nocm    # AlmaLinux 9.0
+  # box:              enterprisemodules/rl-9.0-x86_64-nocm    # RockyLinux 9.0
+  # box:                enterprisemodules/ol-7.7-x86_64-nocm
   box:              enterprisemodules/ol-8.1-x86_64-nocm
-  dhcp_fix:         false
-  virtualboxorafix: false
-  custom_facts:
-    deployment_zone: vagrant
-
-#
-# The default settings for all ML nodes
-#
-ml-defaults:
-  type:             masterless
-
-#
-# The default settings for all PE nodes
-#
-pe-defaults:
-  type:             pe-agent
-  puppet_master:    dbmaster
 
 #
 # The settings for the Puppet Enterprise Server
 #
-pe-dbmaster:
-  public_ip:        192.168.56.10
-  cpucount:         2
-  ram:              3072
-  type:             pe-master
-  virtualboxorafix: false
-  puppet_installer: puppet-enterprise-2021.5.0-el-8-x86_64/puppet-enterprise-installer
+pe-puppetserver:
+  puppet_installer: puppet-enterprise-2019.5.0-el-8-x86_64/puppet-enterprise-installer
+
 
 #
-# All masterless nodes
+# All nodes nodes
 #
-ml-db112:
-  public_ip:        '192.168.56.112'
+db112:
   box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
   software_files:
     - p13390677_112040_Linux-x86-64_1of7.zip
     - p13390677_112040_Linux-x86-64_2of7.zip
 
-ml-db121:
-  public_ip:        '192.168.56.121'
+db121:
   box:              enterprisemodules/ol-7.7-x86_64-nocm
   software_files:
     - linuxamd64_12102_database_1of2.zip
     - linuxamd64_12102_database_2of2.zip
 
-ml-db122:
-  public_ip:        '192.168.56.122'
+db122:
   software_files:
   - linuxx64_12201_database.zip
   - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
   - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
 
-ml-db180:
-  public_ip:        '192.168.56.180'
+db180:
   software_files:
   - LINUX.X64_180000_db_home.zip
   - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
   - p32524152_180000_Linux-x86-64.zip               # 18c APR2021RU
   - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
 
-ml-cl190:
-  public_ip:        '192.168.56.191'
+cl190:
   software_files:
   - LINUX.X64_193000_client.zip
 
-ml-db190:
-  public_ip:        '192.168.56.190'
+db190:
   software_files: 
   - LINUX.X64_193000_db_home.zip
   - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
   - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
 
-ml-db210:
-  public_ip:        '192.168.56.210'
+db210:
   software_files:
   - LINUX.X64_213000_db_home.zip
   - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
   - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
 
-ml-cl211:
-  public_ip:        '192.168.56.211'
+cl211:
   software_files:
     - LINUX.X64_193000_client.zip
 
-ml-dbxxx:
-  public_ip:        '192.168.56.200'
+dbxxx:
   cpucount:         2
   ram:              10240
   software_files:
@@ -115,8 +90,7 @@ ml-dbxxx:
   - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
 
-ml-wincl190:
-  public_ip:        '192.168.56.212'
+wincl190:
   protocol:         winrm
   box:              gusztavvargadr/windows-server
   cpucount:         2
@@ -124,8 +98,7 @@ ml-wincl190:
   software_files:
     - WINDOWS.X64_193000_client_home.zip
 
-ml-windb180:
-  public_ip:        '192.168.56.181'
+windb180:
   protocol:         winrm
   box:              gusztavvargadr/windows-server
   cpucount:         4
@@ -133,8 +106,7 @@ ml-windb180:
   software_files:
     - WINDOWS.X64_180000_db_home.zip
 
-ml-windb190:
-  public_ip:        '192.168.56.183'
+windb190:
   protocol:         winrm
   box:              gusztavvargadr/windows-server
   cpucount:         4
@@ -145,8 +117,7 @@ ml-windb190:
     - p35354406_190000_MSWIN-x86-64.zip             # 19c JUL2023RU OJVM
     - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.41
 
-ml-windows:
-  public_ip:        '192.168.56.182'
+windows:
   protocol:         winrm
   box:              gusztavvargadr/windows-server
   cpucount:         4
@@ -156,112 +127,4 @@ ml-windows:
     - p35046439_190000_MSWIN-x86-64.zip             # 19c APR2023RU
     - p35050341_190000_MSWIN-x86-64.zip             # 19c APR2023RU OJVM
     - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.41
-
-#
-# All Puppet Agent nodes
-#
-pe-db112:
-  public_ip:        '192.168.56.112'
-  box:              enterprisemodules/ol-6.8-x86_64-nocm # Box not in cloud anymore...
-  software_files:
-    - p13390677_112040_Linux-x86-64_1of7.zip
-    - p13390677_112040_Linux-x86-64_2of7.zip
-
-pe-db121:
-  public_ip:        '192.168.56.121'
-  box:              enterprisemodules/ol-7.7-x86_64-nocm
-  software_files:
-    - linuxamd64_12102_database_1of2.zip
-    - linuxamd64_12102_database_2of2.zip
-
-pe-db122:
-  public_ip:        '192.168.56.122'
-  software_files:
-  - linuxx64_12201_database.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
-  - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
-
-pe-db180:
-  public_ip:        '192.168.56.180'
-  software_files:
-  - LINUX.X64_180000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p32524152_180000_Linux-x86-64.zip               # 18c APR2021RU
-  - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
-
-pe-db190:
-  public_ip:        '192.168.56.190'
-  software_files:
-  - LINUX.X64_193000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
-  - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
-
-pe-db210:
-  public_ip:        '192.168.56.210'
-  software_files:
-  - LINUX.X64_213000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
-
-pe-dbxxx:
-  public_ip:        '192.168.56.200'
-  cpucount:         2
-  ram:              10240
-  software_files:
-  - LINUX.X64_213000_db_home.zip                    # 21c oracle home
-  - LINUX.X64_193000_db_home.zip                    # 19c oracle home
-  - LINUX.X64_180000_db_home.zip                    # 18c oracle home
-  - linuxx64_12201_database.zip                     # 12cR2 oracle home
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
-  - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
-  - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
-  - p32524152_180000_Linux-x86-64.zip               # 18c APR2021RU
-  - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
-  - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
-  - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
-
-pe-wincl190:
-  public_ip:        '192.168.56.212'
-  protocol:         winrm
-  box:              gusztavvargadr/windows-server
-  cpucount:         2
-  ram:              8192
-  software_files:
-    - WINDOWS.X64_193000_client_home.zip
-
-pe-windb180:
-  public_ip:        '192.168.56.181'
-  protocol:         winrm
-  box:              gusztavvargadr/windows-server
-  cpucount:         4
-  ram:              8192
-  software_files:
-    - WINDOWS.X64_180000_db_home.zip
-
-pe-windb190:
-  public_ip:        '192.168.56.183'
-  protocol:         winrm
-  box:              gusztavvargadr/windows-server
-  cpucount:         4
-  ram:              8192
-  software_files:
-    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
-    - p35348034_190000_MSWIN-x86-64.zip             # 19c JUL2023RU
-    - p35354406_190000_MSWIN-x86-64.zip             # 19c JUL2023RU OJVM
-    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
-
-pe-windows:
-  public_ip:        '192.168.56.182'
-  protocol:         winrm
-  box:              gusztavvargadr/windows-server
-  cpucount:         4
-  ram:              8192
-  software_files:
-    - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
-    - p35046439_190000_MSWIN-x86-64.zip             # 19c APR2023RU
-    - p35050341_190000_MSWIN-x86-64.zip             # 19c APR2023RU OJVM
-    - p6880880_190000_MSWIN-x86-64.zip              # 19c Opatch version 12.2.0.1.37
 
