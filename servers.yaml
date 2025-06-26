@@ -10,11 +10,12 @@ defaults:
   # Chose one of the boxes you like
   #
   # box:              enterprisemodules/ol-8.1-x86_64-nocm    # OracleLinux 8.1
-  # box:              enterprisemodules/ol-9.0-x86_64-nocm    # Oracle Linux 9.0
+  # box:              enterprisemodules/ol-9.0-x86_64-nocm    # OracleLinux 9.0
   # box:              enterprisemodules/al-9.0-x86_64-nocm    # AlmaLinux 9.0
   # box:              enterprisemodules/rl-9.0-x86_64-nocm    # RockyLinux 9.0
-  # box:                enterprisemodules/ol-7.7-x86_64-nocm
-  box:              enterprisemodules/ol-8.1-x86_64-nocm
+  # box:              enterprisemodules/ol-7.7-x86_64-nocm    # OracleLinux 7.7
+  box:              enterprisemodules/ol-8.1-x86_64-nocm    # OracleLinux 8.1
+  run_r10k:         false
 
 #
 # The settings for the Puppet Enterprise Server
@@ -41,14 +42,14 @@ db121:
 db122:
   software_files:
   - linuxx64_12201_database.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_122010_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
   - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
   - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
 
 db180:
   software_files:
   - LINUX.X64_180000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_180000_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
   - p32524152_180000_Linux-x86-64.zip               # 18c APR2021RU
   - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
 
@@ -57,17 +58,22 @@ cl190:
   - LINUX.X64_193000_client.zip
 
 db190:
-  software_files: 
+  software_files:
   - LINUX.X64_193000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_190000_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
   - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
   - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
 
 db210:
   software_files:
   - LINUX.X64_213000_db_home.zip
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
+  - p6880880_210000_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
   - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
+
+db230:
+  software_files:
+  - LINUX.X64_235000_forEngineeredSystems_db_home.zip
+  - p6880880_230000_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
 
 cl211:
   software_files:
@@ -77,18 +83,23 @@ dbxxx:
   cpucount:         2
   ram:              10240
   software_files:
-  - LINUX.X64_213000_db_home.zip                    # 21c oracle home
-  - LINUX.X64_193000_db_home.zip                    # 19c oracle home
-  - LINUX.X64_180000_db_home.zip                    # 18c oracle home
-  - linuxx64_12201_database.zip                     # 12cR2 oracle home
-  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
-  - p34526142_210000_Linux-x86-64.zip               # 21c OCT2022RU
-  - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
-  - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
-  - p32524152_180000_Linux-x86-64.zip               # 18c APR2021RU
-  - p32552752_180000_Linux-x86-64.zip               # 18c APR2021RU OJVM
-  - p33583921_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU
-  - p33561275_122010_Linux-x86-64.zip               # 12cR2 JAN2022RU OJVM
+  - LINUX.X64_235000_forEngineeredSystems_db_home.zip # 23ai oracle home
+  - LINUX.X64_213000_db_home.zip                      # 21c oracle home
+  - LINUX.X64_193000_db_home.zip                      # 19c oracle home
+  - LINUX.X64_180000_db_home.zip                      # 18c oracle home
+  - linuxx64_12201_database.zip                       # 12cR2 software
+  - p6880880_122010_Linux-x86-64-12.2.0.1.47.zip      # OPatch upgrade version 12.2.0.1.47 for Oracle 12cR2
+  - p6880880_180000_Linux-x86-64-12.2.0.1.47.zip      # OPatch upgrade version 12.2.0.1.47 for Oracle 18c
+  - p6880880_190000_Linux-x86-64-12.2.0.1.47.zip      # OPatch upgrade version 12.2.0.1.47 for Oracle 19c
+  - p6880880_210000_Linux-x86-64-12.2.0.1.47.zip      # OPatch upgrade version 12.2.0.1.47 for Oracle 21c
+  - p6880880_230000_Linux-x86-64-12.2.0.1.47.zip      # OPatch upgrade version 12.2.0.1.47 for Oracle 23ai
+  - p34526142_210000_Linux-x86-64.zip                 # 21c OCT2022RU
+  - p34416665_190000_Linux-x86-64.zip                 # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip                 # 19c OCT2022RU OJVM
+  - p32524152_180000_Linux-x86-64.zip                 # 18c APR2021RU
+  - p32552752_180000_Linux-x86-64.zip                 # 18c APR2021RU OJVM
+  - p33583921_122010_Linux-x86-64.zip                 # 12cR2 JAN2022RU
+  - p33561275_122010_Linux-x86-64.zip                 # 12cR2 JAN2022RU OJVM
 
 wincl190:
   protocol:         winrm
@@ -111,6 +122,7 @@ windb190:
   box:              gusztavvargadr/windows-server
   cpucount:         4
   ram:              8192
+  run_r10k:         false
   software_files:
     - WINDOWS.X64_193000_db_home.zip                # 19c oracle home
     - p35348034_190000_MSWIN-x86-64.zip             # 19c JUL2023RU

@@ -10,7 +10,8 @@ role: role::oradb::simple_db
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::rman_config:                                       ~
-ora_profile::database::fact_caching::enabled:                             true
+ora_profile::database::fact_caching::enabled:                             false
+# ora_profile::database::db_definition:                                     ora_profile::database::db_definition_template
 
 
 # ------------------------------------------------------------------------------
@@ -18,8 +19,8 @@ ora_profile::database::fact_caching::enabled:                             true
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::dbname:                                            DB210
-ora_profile::database::version:                                           21.0.0.0
+ora_profile::database::dbname:                                            DB230
+ora_profile::database::version:                                           23.0.0.0
 ora_profile::database::oracle_home:                                       /u01/app/oracle/product/%{lookup('ora_profile::database::version')}/db_home1
 ora_profile::database::cis_controls::db_version:                          db19c  # This works on all versions
 
@@ -29,8 +30,9 @@ ora_profile::database::cis_controls::db_version:                          db19c 
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_software::file_name:                            LINUX.X64_213000_db_home
+ora_profile::database::db_software::file_name:                            LINUX.X64_235000_forEngineeredSystems_db_home
 ora_profile::database::db_software::dirs:
+- /u01/app/oracle/product/21.0.0.0
 - /u01/app/oracle/product/19.0.0.0
 - /u01/app/oracle/product/18.0.0.0
 - /u01/app/oracle/product/12.2.0.1
@@ -40,7 +42,12 @@ ora_profile::database::db_software::dirs:
 - /u03/backup/DB180
 - /u03/backup/DB190
 - /u03/backup/DB210
+- /u03/backup/DB230
 ora_profile::database::db_software::oracle_home:
+  23aiDEFAULT_HOME:
+    version:     23.0.0.0
+    file:        LINUX.X64_235000_forEngineeredSystems_db_home
+    oracle_home: /u01/app/oracle/product/23.0.0.0/db_home1
   21cDEFAULT_HOME:
     version:     21.0.0.0
     file:        LINUX.X64_213000_db_home
@@ -49,10 +56,6 @@ ora_profile::database::db_software::oracle_home:
     version:     19.0.0.0
     file:        LINUX.X64_193000_db_home
     oracle_home: /u01/app/oracle/product/19.0.0.0/db_home1
-  19cADDITIONAL_HOME:
-    version:     19.0.0.0
-    file:        LINUX.X64_193000_db_home
-    oracle_home: /u01/app/oracle/product/19.0.0.0/db_home2
   18cADDITIONAL_HOME:
     version:     18.0.0.0
     file:        LINUX.X64_180000_db_home
@@ -72,10 +75,20 @@ ora_profile::database::db_software::oracle_home:
 #  Settings for database::db_patches
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+ora_profile::database::db_patches::patch_file:
+  '/u01/app/oracle/product/23.0.0.0/db_home1':
+    patch_file: p6880880_230000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+  '/u01/app/oracle/product/21.0.0.0/db_home1':
+    patch_file: p6880880_210000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+  '/u01/app/oracle/product/19.0.0.0/db_home1':
+    patch_file: p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+  '/u01/app/oracle/product/18.0.0.0/db_home1':
+    patch_file: p6880880_180000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+  '/u01/app/oracle/product/12.2.0.1/db_home1':
+    patch_file: p6880880_122010_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
 ora_profile::database::db_patches::include_ojvm:                          true
-ora_profile::database::db_patches::level:                                 OCT2022RU
-ora_profile::database::db_patches::opversion:                             12.2.0.1.33
+ora_profile::database::db_patches::level:                                 NONE
+ora_profile::database::db_patches::opversion:                             12.2.0.1.47
 ora_profile::database::db_patches::patch_list:
   "/u01/app/oracle/product/19.0.0.0/db_home1:34416665-GIRU-19.17.0.0.221018":                       # GI Release Update 19.17.0.0.221018
     source:                "%{::ora_profile::database::source}/p34416665_190000_Linux-x86-64.zip"
@@ -115,8 +128,16 @@ ora_profile::database::db_patches::patch_list:
 #  Settings for database::db_definition
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_definition::container_database:                  enabled
+ora_profile::database::db_definition::container_database:                 enabled
+ora_profile::database::db_definition::init_ora_template:                  profile/init.ora.epp
 ora_profile::database::db_definition::dbname:
+  DB230:
+    oracle_home:        /u01/app/oracle/product/23.0.0.0/db_home1
+    container_database: enabled
+    init_ora_params:
+      dbname:     DB230
+      compatible: '23.0.0.0'
+    spfile_location:  /u01/app/oracle/product/23.0.0.0/db_home1/dbs
   DB210:
     oracle_home:        /u01/app/oracle/product/21.0.0.0/db_home1
     container_database: enabled
@@ -126,21 +147,21 @@ ora_profile::database::db_definition::dbname:
     spfile_location:  /u01/app/oracle/product/21.0.0.0/db_home1/dbs
   DB190:
     oracle_home:        /u01/app/oracle/product/19.0.0.0/db_home1
-    container_database: disabled
+    container_database: enabled
     init_ora_params:
       dbname:     DB190
       compatible: '19.0.0.0'
     spfile_location:  /u01/app/oracle/product/19.0.0.0/db_home1/dbs
   DB180:
     oracle_home:        /u01/app/oracle/product/18.0.0.0/db_home1
-    container_database: disabled
+    container_database: enabled
     init_ora_params:
       dbname:     DB180
       compatible: '18.0.0.0'
     spfile_location:  /u01/app/oracle/product/18.0.0.0/db_home1/dbs
   DB122:
     oracle_home:        /u01/app/oracle/product/12.2.0.1/db_home1
-    container_database: disabled
+    container_database: enabled
     init_ora_params:
       dbname:     DB122
       compatible: '12.2.0.1'
@@ -203,7 +224,7 @@ ora_profile::database::rman_config::settings:
 #  Settings for database::db_listener
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_listener::sqlnet_version:                       '21.0'
+ora_profile::database::db_listener::sqlnet_version:                       '23.0'
 
 
 # ------------------------------------------------------------------------------

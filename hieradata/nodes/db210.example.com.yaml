@@ -37,7 +37,8 @@ ora_profile::database::db_software::dirs:
 #  Settings for database::db_patches
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+ora_profile::database::db_patches::opversion:                             12.2.0.1.47
+ora_profile::database::db_patches::patch_file:                            p6880880_210000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
 ora_profile::database::db_patches::level:                                 OCT2022RU
 
 

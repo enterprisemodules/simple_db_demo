@@ -13,6 +13,7 @@
 /modules/nfs
 /modules/ora_config
 /modules/ora_install
+/modules/partition
 /modules/sleep
 /modules/stdlib
 /modules/swap_file
