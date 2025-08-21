@@ -16,6 +16,16 @@ multi_home_and_db_demo_check:
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - vagrant prepare $server
 
+db230_demo_check:
+  extends: .demo_check
+  variables:
+    server: ml-db230
+  before_script:
+    - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
+    - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
+    - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - vagrant prepare $server
+
 db210_demo_check:
   extends: .demo_check
   variables:
@@ -25,7 +35,6 @@ db210_demo_check:
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
     - vagrant prepare $server
-
 
 cl190_demo_check:
   extends: .demo_check

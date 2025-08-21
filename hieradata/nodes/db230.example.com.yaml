@@ -18,8 +18,8 @@ ora_profile::database::fact_caching::enabled:                             true
 #  Settings for database
 #
 # ------------------------------------------------------------------------------
-ora_profile::database::dbname:                                            DB190
-ora_profile::database::version:                                           19.0.0.0
+ora_profile::database::dbname:                                            DB230
+ora_profile::database::version:                                           23.0.0.0
 
 
 # ------------------------------------------------------------------------------
@@ -27,9 +27,10 @@ ora_profile::database::version:                                           19.0.0
 #  Settings for database::db_software
 #
 # ------------------------------------------------------------------------------
+ora_profile::database::db_software::file_name:                            LINUX.X64_235000_forEngineeredSystems_db_home
 ora_profile::database::db_software::dirs:
 - /u01/backup
-- /u01/backup/DB190
+- /u01/backup/DB230
 
 
 # ------------------------------------------------------------------------------
@@ -38,9 +39,16 @@ ora_profile::database::db_software::dirs:
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::db_patches::opversion:                             12.2.0.1.47
-ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
-ora_profile::database::db_patches::level:                                 OCT2022RU
-ora_profile::database::db_patches::include_ojvm:                          true
+ora_profile::database::db_patches::patch_file:                            p6880880_230000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+ora_profile::database::db_patches::level:                                 NONE
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_definition
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_definition::init_ora_template:                  profile/init.ora.epp
 
 
 # ------------------------------------------------------------------------------
@@ -49,16 +57,30 @@ ora_profile::database::db_patches::include_ojvm:                          true
 #
 # ------------------------------------------------------------------------------
 ora_profile::database::rman_config::settings:
-  DB190:
+  DB230:
     archivelog_backup_copies:
       DISK: '1'
     backup_optimization: 'ON'
     controlfile_autobackup: 'ON'
     controlfile_autobackup_format:
-      DISK: '/u03/backup/DB190/%F'
+      DISK: '/u03/backup/DB230/%F'
     device:
       DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
-    encryption_algorithm: AES256
+    compression_algorithm: "'ZSTD' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD FALSE"
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_startup
+#
+# ------------------------------------------------------------------------------
+# ora_profile::database::db_startup::systemd_template:                      profile/dbora_systemd_autorestart.epp
+# ora_profile::database::db_startup::systemd_template_vars:
+#   oracle_home: "%{lookup('ora_profile::database::oracle_home')}"
+#   oracle_sid:  "%{lookup('ora_profile::database::dbname')}"
+#   user:        "%{lookup('ora_profile::database::os_user')}"
+#   group:       "%{lookup('ora_profile::database::dba_group')}"
+#   limits:      "%{alias('ora_profile::database::limits::list')}"
 
 
 # ------------------------------------------------------------------------------
