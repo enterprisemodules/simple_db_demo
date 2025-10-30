@@ -14,6 +14,7 @@ multi_home_and_db_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-dbxxx|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-dbxxx|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db230_demo_check:
@@ -24,6 +25,7 @@ db230_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db230|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db230|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db210_demo_check:
@@ -34,6 +36,7 @@ db210_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db210|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db210|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 cl190_demo_check:
@@ -44,6 +47,7 @@ cl190_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-cl190|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-cl190|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db190_demo_check:
@@ -54,6 +58,7 @@ db190_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db190|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db190|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db180_demo_check:
@@ -64,6 +69,7 @@ db180_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db180|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db180|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db122_demo_check:
@@ -74,6 +80,7 @@ db122_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db122|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db122|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 db121_demo_check:
@@ -84,6 +91,7 @@ db121_demo_check:
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
+    - BOX=$(vagrant global-status|grep ml-db121|awk '{print $1}'); DIR=$(vagrant global-status|grep ml-db121|awk '{print $5}'); cd ${DIR}; vagrant destroy -f ${BOX:-ml-dummy}
     - vagrant prepare $server
 
 # windb190_demo_check:
