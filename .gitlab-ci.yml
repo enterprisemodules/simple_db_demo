@@ -11,6 +11,9 @@ multi_home_and_db_demo_check:
   variables:
     server: ml-dbxxx
   before_script:
+    - vboxmanage controlvm ml-dbxxx poweroff 2>/dev/null || true
+    - vboxmanage unregistervm ml-dbxxx --delete-all 2>/dev/null || true
+    - rm -rf /home/gitlab-runner/VirtualBox\ VMs/ml-dbxxx
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
@@ -21,6 +24,9 @@ db230_demo_check:
   variables:
     server: ml-db230
   before_script:
+    - vboxmanage controlvm ml-db230 poweroff 2>/dev/null || true
+    - vboxmanage unregistervm ml-db230 --delete-all 2>/dev/null || true
+    - rm -rf /home/gitlab-runner/VirtualBox\ VMs/ml-db230
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
@@ -31,6 +37,9 @@ db210_demo_check:
   variables:
     server: ml-db210
   before_script:
+    - vboxmanage controlvm ml-db210 poweroff 2>/dev/null || true
+    - vboxmanage unregistervm ml-db210 --delete-all 2>/dev/null || true
+    - rm -rf /home/gitlab-runner/VirtualBox\ VMs/ml-db210
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
@@ -41,6 +50,9 @@ cl190_demo_check:
   variables:
     server: ml-cl190
   before_script:
+    - vboxmanage controlvm ml-cl190 poweroff 2>/dev/null || true
+    - vboxmanage unregistervm ml-cl190 --delete-all 2>/dev/null || true
+    - rm -rf /home/gitlab-runner/VirtualBox\ VMs/ml-cl190
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
@@ -51,6 +63,9 @@ db190_demo_check:
   variables:
     server: ml-db190
   before_script:
+    - vboxmanage controlvm ml-db190 poweroff 2>/dev/null || true
+    - vboxmanage unregistervm ml-db190 --delete-all 2>/dev/null || true
+    - rm -rf /home/gitlab-runner/VirtualBox\ VMs/ml-db190
     - echo -e "machine gitlab.com\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > .netrc
     - if [ "$USE_LATEST_MODULES" == "yes" ]; then touch ./use_latest_modules ; fi
     - if [ $PUPPET_VERSION ]; then echo $PUPPET_VERSION > ./puppet_version ; fi
