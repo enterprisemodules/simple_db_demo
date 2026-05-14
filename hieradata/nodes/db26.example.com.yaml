@@ -1,0 +1,58 @@
+---
+deployment_zone: vagrant
+
+role: role::oradb::simple_db
+# role: role::oradb::secure_db
+
+# ------------------------------------------------------------------------------
+#
+#  Class overrides and additions
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::rman_config:                                       ~
+ora_profile::database::fact_caching::enabled:                             true
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::dbname:                                            DB26
+ora_profile::database::version:                                           26.0.0.0
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_software
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_software::dirs:
+- /u01/backup
+- /u01/backup/DB26
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_patches
+#
+# ------------------------------------------------------------------------------
+# No RU patches bundled with the demo for 26ai yet; the base home contains
+# RU 23.26.10.0.
+ora_profile::database::db_patches:                                        skip
+
+
+# ------------------------------------------------------------------------------
+#
+# CIS parameters
+#
+# ------------------------------------------------------------------------------
+ora_cis::controls::failed_login_attempts_is_less_than_or_equal_to_5::test_1::preferred_value: 3
+
+
+# ------------------------------------------------------------------------------
+#
+# This is the full skip list for database::cis_controls
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::cis_controls::skip_list: []

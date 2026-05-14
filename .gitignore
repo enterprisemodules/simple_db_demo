@@ -74,3 +74,4 @@ windows_hosts_file.pp
 /modules/augeasproviders_grub
 /modules/ora_secured/
 /modules/systemd/
+/.claude

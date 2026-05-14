@@ -74,6 +74,11 @@ db230:
   - LINUX.X64_235000_forEngineeredSystems_db_home.zip
   - p6880880_230000_Linux-x86-64-12.2.0.1.47.zip    # OPatch upgrade version 12.2.0.1.47
 
+db26:
+  box:              enterprisemodules/ol-9.0-x86_64-nocm  # Oracle Linux 9.0 (required for 26ai)
+  software_files:
+  - LINUX.X64_2326100_db_home.zip                   # 26ai oracle home
+
 cl211:
   software_files:
     - LINUX.X64_193000_client.zip
